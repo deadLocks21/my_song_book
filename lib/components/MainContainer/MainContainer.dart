@@ -13,7 +13,7 @@ class _MainContainerState extends State<MainContainer> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: MediaQuery.of(context).size.width * 0.9,
+      width: MediaQuery.of(context).size.width * 0.93,
       height: MediaQuery.of(context).size.height,
       color: widget.background,
       child: Center(child: Text(widget.title)),
