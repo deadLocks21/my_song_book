@@ -9,8 +9,9 @@ class MenuButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return TextButton(
-      child: Text(icon),
+    return IconButton(
+      // icon: Icon(Icons.safety_divider),
+      icon: Image.asset("assets/" + icon + ".png"),
       onPressed: () {
         homeMenuManager.changeIndex(value);
       },

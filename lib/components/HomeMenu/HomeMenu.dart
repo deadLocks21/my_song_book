@@ -14,11 +14,11 @@ class HomeMenu extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
-            MenuButton(icon: "Dashboard", value: 1),
-            MenuButton(icon: "Partitions", value: 2),
-            MenuButton(icon: "Favoris", value: 3),
-            MenuButton(icon: "Listes", value: 4),
-            MenuButton(icon: "Paramètres", value: 5),
+            MenuButton(icon: "dashboard", value: 1),
+            MenuButton(icon: "sheets", value: 2),
+            MenuButton(icon: "favorites", value: 3),
+            MenuButton(icon: "lists", value: 4),
+            MenuButton(icon: "settings", value: 5),
           ],
         ),
       ),
