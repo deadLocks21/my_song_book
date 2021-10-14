@@ -16,12 +16,15 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Row(
-        children: [
-          const HomeMenu(),
-          ChooseContent()
-          // ValueListenableBuilder(valueListenable: homeMenuManager.index,)
-        ],
+      body: Container(
+        color: const Color(0xFFE3DEDA),
+        child: Row(
+          children: [
+            const HomeMenu(),
+            ChooseContent()
+            // ValueListenableBuilder(valueListenable: homeMenuManager.index,)
+          ],
+        ),
       ),
     );
   }
