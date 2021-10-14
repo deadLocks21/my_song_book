@@ -20,7 +20,7 @@ class _HomePageState extends State<HomePage> {
         color: const Color(0xFFE3DEDA),
         child: Row(
           children: [
-            const HomeMenu(),
+            HomeMenu(),
             ChooseContent()
             // ValueListenableBuilder(valueListenable: homeMenuManager.index,)
           ],
