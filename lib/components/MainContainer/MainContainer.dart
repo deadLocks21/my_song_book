@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:my_song_book/components/MainContainer/ContainerTitle.dart';
 
 class MainContainer extends StatefulWidget {
-  MainContainer({Key? key, this.title = "", this.background = Colors.white})
+  MainContainer({Key? key, this.title = "", this.content = const Text("Error")})
       : super(key: key);
   String title;
-  Color background;
+  Widget content;
 
   @override
   _MainContainerState createState() => _MainContainerState();
@@ -22,16 +23,8 @@ class _MainContainerState extends State<MainContainer> {
             horizontal: MediaQuery.of(context).size.width * 0.05),
         child: Column(
           children: [
-            Align(
-              alignment: Alignment.topLeft,
-              child: Text(
-                widget.title,
-                style: TextStyle(
-                  fontSize: 30.0,
-                  fontWeight: FontWeight.bold
-                ),
-              ),
-            ),
+            ContainerTitle(title: widget.title),
+            widget.content
           ],
         ),
       ),

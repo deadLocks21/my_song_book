@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:my_song_book/components/HomeMenu/HomeMenuManager.dart';
+import 'package:my_song_book/components/MainContainer/Dashboard/DashboardPage.dart';
+import 'package:my_song_book/components/MainContainer/Favorites/FavoritesPage.dart';
+import 'package:my_song_book/components/MainContainer/Lists/ListsPage.dart';
 import 'package:my_song_book/components/MainContainer/MainContainer.dart';
+import 'package:my_song_book/components/MainContainer/Settings/SettingsPage.dart';
+import 'package:my_song_book/components/MainContainer/Sheets/SheetsPage.dart';
 
 class ChooseContent extends StatefulWidget {
   ChooseContent({Key? key}) : super(key: key);
@@ -38,31 +43,31 @@ class _ChooseContentState extends State<ChooseContent>
       case 1:
         w = MainContainer(
           title: "Dashboard",
-          background: Colors.red,
+          content: DashboardPage(),
         );
         break;
       case 2:
         w = MainContainer(
           title: "Partitions",
-          background: Colors.purple,
+          content: SheetsPage(),
         );
         break;
       case 3:
         w = MainContainer(
           title: "Favories",
-          background: Colors.orange,
+          content: FavoritesPage(),
         );
         break;
       case 4:
         w = MainContainer(
           title: "Listes",
-          background: Colors.blue,
+          content: ListsPage(),
         );
         break;
       case 5:
         w = MainContainer(
           title: "Paramètres",
-          background: Colors.green,
+          content: SettingsPage(),
         );
         break;
       default:
