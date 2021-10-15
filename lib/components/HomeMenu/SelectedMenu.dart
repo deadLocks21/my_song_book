@@ -49,7 +49,6 @@ class _SelectedMenuState extends State<SelectedMenu> {
         final Size size = renderBox.size;
         final Offset offset = renderBox.localToGlobal(Offset.zero);
         top = offset.dy - 10;
-        print(top);
       },
     );
   }

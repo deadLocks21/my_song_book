@@ -1,29 +1,12 @@
-// import 'package:flutter/material.dart';
-// import 'package:my_song_book/components/HomeMenu/HomeMenuManager.dart';
-
-// class MenuButton extends StatelessWidget {
-//   MenuButton({Key? key, this.icon = "", this.value = 0}) : super(key: key);
-//   HomeMenuManager homeMenuManager = HomeMenuManager.instance;
-//   String icon;
-//   int value;
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return IconButton(
-//       icon: Image.asset("assets/" + icon + ".png"),
-//       onPressed: () {
-//         homeMenuManager.changeIndex(value);
-//       },
-//     );
-//   }
-// }
+import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:my_song_book/components/HomeMenu/HomeMenuManager.dart';
 
 class MenuButton extends StatefulWidget {
-  MenuButton({Key? key, this.icon = "", this.value = 0}) : super(key: key);
-  String icon;
+  MenuButton({Key? key, this.icon = Icons.error, this.value = 0})
+      : super(key: key);
+  IconData icon;
   int value;
 
   @override
@@ -32,12 +15,37 @@ class MenuButton extends StatefulWidget {
 
 class _MenuButtonState extends State<MenuButton> {
   HomeMenuManager homeMenuManager = HomeMenuManager.instance;
+  Color color = Colors.red;
+
+  @override
+  void initState() {
+    super.initState();
+    homeMenuManager.addListener(() {
+      setState(() {
+        if (homeMenuManager.index == widget.value) {
+          color = Colors.white;
+        } else {
+          color = Color(0xFFEC3E1E);
+        }
+      });
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
+    if (color == Colors.red) {
+      if (widget.value != 1) {
+        color = Color(0xFFEC3E1E);
+      } else {
+        color = Colors.white;
+      }
+    }
+
     return IconButton(
-      // key: widget.key,
-      icon: Image.asset("assets/" + widget.icon + ".png"),
+      icon: Icon(
+        widget.icon,
+        color: color,
+      ),
       onPressed: () {
         homeMenuManager.changeIndex(widget.value);
       },
