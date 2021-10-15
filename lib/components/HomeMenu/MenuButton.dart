@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:io';
 
 import 'package:flutter/material.dart';
@@ -21,13 +22,17 @@ class _MenuButtonState extends State<MenuButton> {
   void initState() {
     super.initState();
     homeMenuManager.addListener(() {
-      setState(() {
-        if (homeMenuManager.index == widget.value) {
-          color = Colors.white;
-        } else {
+      if (homeMenuManager.index == widget.value) {
+        Timer(const Duration(milliseconds: 150), () {
+          setState(() {
+            color = Colors.white;
+          });
+        });
+      } else {
+        setState(() {
           color = Color(0xFFEC3E1E);
-        }
-      });
+        });
+      }
     });
   }
 
