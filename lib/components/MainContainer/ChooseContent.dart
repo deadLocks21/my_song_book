@@ -1,11 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:my_song_book/components/HomeMenu/HomeMenuManager.dart';
-import 'package:my_song_book/components/MainContainer/Dashboard/DashboardPage.dart';
-import 'package:my_song_book/components/MainContainer/Favorites/FavoritesPage.dart';
-import 'package:my_song_book/components/MainContainer/Lists/ListsPage.dart';
-import 'package:my_song_book/components/MainContainer/MainContainer.dart';
-import 'package:my_song_book/components/MainContainer/Settings/SettingsPage.dart';
-import 'package:my_song_book/components/MainContainer/Sheets/SheetsPage.dart';
+import 'package:my_song_book/managers/HomeMenuItemsManager.dart';
+import 'package:my_song_book/managers/HomeMenuStatesManager.dart';
 
 class ChooseContent extends StatefulWidget {
   ChooseContent({Key? key}) : super(key: key);
@@ -27,59 +22,21 @@ class _ChooseContentState extends State<ChooseContent>
     curve: Curves.fastOutSlowIn,
   );
 
-  final homeMenuManager = HomeMenuManager.instance;
+  final homeMenuStatesManager = HomeMenuStatesManager.instance;
+  final homeMenuItemsManager = HomeMenuItemsManager.instance;
 
   @override
   void initState() {
     super.initState();
-    homeMenuManager.addListener(editPage);
+    homeMenuStatesManager.addListener(editPage);
   }
 
   @override
   Widget build(BuildContext context) {
-    Widget w;
-
-    switch (homeMenuManager.index) {
-      case 1:
-        w = MainContainer(
-          title: "Dashboard",
-          content: DashboardPage(),
-        );
-        break;
-      case 2:
-        w = MainContainer(
-          title: "Partitions",
-          content: SheetsPage(),
-        );
-        break;
-      case 3:
-        w = MainContainer(
-          title: "Favories",
-          content: FavoritesPage(),
-        );
-        break;
-      case 4:
-        w = MainContainer(
-          title: "Listes",
-          content: ListsPage(),
-        );
-        break;
-      case 5:
-        w = MainContainer(
-          title: "Paramètres",
-          content: SettingsPage(),
-        );
-        break;
-      default:
-        w = const Center(
-          child: Text("Error"),
-        );
-    }
-
     _controller.forward(from: 0);
     return ScaleTransition(
       scale: _animation,
-      child: w,
+      child: homeMenuItemsManager.getMainContainerOfIndex(),
     );
   }
 

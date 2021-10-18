@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:my_song_book/components/HomeMenu/HomeMenuManager.dart';
-import 'package:my_song_book/components/HomeMenu/PlaceGetter.dart';
+import 'package:my_song_book/managers/HomeMenuItemsManager.dart';
+import 'package:my_song_book/managers/HomeMenuStatesManager.dart';
 
 class SelectedMenu extends StatefulWidget {
   const SelectedMenu({Key? key}) : super(key: key);
@@ -10,43 +10,24 @@ class SelectedMenu extends StatefulWidget {
 }
 
 class _SelectedMenuState extends State<SelectedMenu> {
-  final HomeMenuManager homeMenuManager = HomeMenuManager.instance;
-  final PlaceGetter placeGetter = PlaceGetter.instance;
+  final HomeMenuStatesManager homeMenuStatesManager =
+      HomeMenuStatesManager.instance;
+  final HomeMenuItemsManager homeMenuItemsManager =
+      HomeMenuItemsManager.instance;
   double top = -100;
 
   @override
   void initState() {
     super.initState();
-    homeMenuManager.addListener(editPage);
+    homeMenuStatesManager.addListener(editPage);
   }
 
   editPage() {
     setState(
       () {
-        RenderBox? renderBox;
-        switch (homeMenuManager.index) {
-          case 2:
-            renderBox = placeGetter.sheets.currentContext?.findRenderObject()
-                as RenderBox;
-            break;
-          case 3:
-            renderBox = placeGetter.favorites.currentContext?.findRenderObject()
-                as RenderBox;
-            break;
-          case 4:
-            renderBox = placeGetter.lists.currentContext?.findRenderObject()
-                as RenderBox;
-            break;
-          case 5:
-            renderBox = placeGetter.settings.currentContext?.findRenderObject()
-                as RenderBox;
-            break;
-          default:
-            renderBox = placeGetter.dashboard.currentContext?.findRenderObject()
-                as RenderBox;
-        }
-
-        final Offset offset = renderBox.localToGlobal(Offset.zero);
+        final Offset offset = homeMenuItemsManager
+            .getRenderBoxOfIndex()
+            .localToGlobal(Offset.zero);
         top = offset.dy - 10;
       },
     );

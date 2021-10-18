@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:my_song_book/components/HomeMenu/HomeMenuManager.dart';
 import 'package:my_song_book/components/MainContainer/ChooseContent.dart';
 import 'package:my_song_book/components/HomeMenu/HomeMenu.dart';
 
@@ -11,8 +10,6 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  final homeMenuManager = HomeMenuManager.instance;
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -22,7 +19,6 @@ class _HomePageState extends State<HomePage> {
           children: [
             HomeMenu(),
             ChooseContent()
-            // ValueListenableBuilder(valueListenable: homeMenuManager.index,)
           ],
         ),
       ),

@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:my_song_book/components/HomeMenu/MenuButton.dart';
-import 'package:my_song_book/components/HomeMenu/PlaceGetter.dart';
 import 'package:my_song_book/components/HomeMenu/SelectedMenu.dart';
-import 'package:my_song_book/home_menu_icons_icons.dart';
+import 'package:my_song_book/managers/HomeMenuItemsManager.dart';
 
 class HomeMenu extends StatelessWidget {
   HomeMenu({Key? key}) : super(key: key);
-  final PlaceGetter placeGetter =  PlaceGetter.instance;
+  final HomeMenuItemsManager homeMenuItemsManager = HomeMenuItemsManager.instance;
 
   @override
   Widget build(BuildContext context) {
@@ -22,11 +20,8 @@ class HomeMenu extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                MenuButton(icon: HomeMenuIcons.dashboard, value: 1, key: placeGetter.dashboard,),
-                MenuButton(icon: HomeMenuIcons.sheets, value: 2, key: placeGetter.sheets,),
-                MenuButton(icon: HomeMenuIcons.favorites, value: 3, key: placeGetter.favorites,),
-                MenuButton(icon: HomeMenuIcons.lists, value: 4, key: placeGetter.lists,),
-                MenuButton(icon: HomeMenuIcons.settings, value: 5, key: placeGetter.settings,),
+                for(int i = 1; i <= homeMenuItemsManager.length; i++ )
+                  homeMenuItemsManager.getHomeButton(i)
               ],
             ),
           ),
