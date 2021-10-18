@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:my_song_book/components/Pages/Dashboard/DashboardPage.dart';
+import 'package:my_song_book/components/Pages/Favorites/FavoritesPage.dart';
 import 'package:my_song_book/components/HomeMenu/MenuButton.dart';
-import 'package:my_song_book/components/MainContainer/Dashboard/DashboardPage.dart';
-import 'package:my_song_book/components/MainContainer/Favorites/FavoritesPage.dart';
-import 'package:my_song_book/components/MainContainer/Lists/ListsPage.dart';
+import 'package:my_song_book/components/Pages/Lists/ListsPage.dart';
 import 'package:my_song_book/components/MainContainer/MainContainer.dart';
-import 'package:my_song_book/components/MainContainer/Settings/SettingsPage.dart';
-import 'package:my_song_book/components/MainContainer/Sheets/SheetsPage.dart';
+import 'package:my_song_book/components/Pages/Settings/SettingsPage.dart';
+import 'package:my_song_book/components/Pages/Sheets/SheetsPage.dart';
 import 'package:my_song_book/home_menu_icons_icons.dart';
 import 'package:my_song_book/logic/HomeMenuItem.dart';
 import 'package:my_song_book/managers/HomeMenuStatesManager.dart';

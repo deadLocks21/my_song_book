@@ -1,0 +1,11 @@
+{
+    "sqltools.connections": [
+        {
+            "previewLimit": 50,
+            "driver": "SQLite",
+            "name": "my_book_song",
+            "database": "/home/tim/Documents/my_song_book.db"
+        }
+    ],
+    "sqltools.useNodeRuntime": true
+}
