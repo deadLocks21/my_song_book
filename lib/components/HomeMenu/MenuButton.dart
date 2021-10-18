@@ -16,7 +16,7 @@ class MenuButton extends StatefulWidget {
 
 class _MenuButtonState extends State<MenuButton> {
   HomeMenuManager homeMenuManager = HomeMenuManager.instance;
-  Color color = Colors.red;
+  Color color = Color(0xFFEC3E1E);
 
   @override
   void initState() {
@@ -38,14 +38,6 @@ class _MenuButtonState extends State<MenuButton> {
 
   @override
   Widget build(BuildContext context) {
-    if (color == Colors.red) {
-      if (widget.value != 1) {
-        color = Color(0xFFEC3E1E);
-      } else {
-        color = Colors.white;
-      }
-    }
-
     return IconButton(
       icon: Icon(
         widget.icon,

@@ -12,7 +12,7 @@ class SelectedMenu extends StatefulWidget {
 class _SelectedMenuState extends State<SelectedMenu> {
   final HomeMenuManager homeMenuManager = HomeMenuManager.instance;
   final PlaceGetter placeGetter = PlaceGetter.instance;
-  double top = 206;
+  double top = -100;
 
   @override
   void initState() {
@@ -46,7 +46,6 @@ class _SelectedMenuState extends State<SelectedMenu> {
                 as RenderBox;
         }
 
-        final Size size = renderBox.size;
         final Offset offset = renderBox.localToGlobal(Offset.zero);
         top = offset.dy - 10;
       },
