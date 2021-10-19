@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:my_song_book/components/MainContainer/ChooseContent.dart';
 import 'package:my_song_book/components/HomeMenu/HomeMenu.dart';
+import 'package:sqflite_common/sqlite_api.dart';
+import 'package:my_song_book/database/DbProvider.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -13,14 +15,11 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        color: const Color(0xFFF6F3F0),
-        child: Row(
-          children: [
-            HomeMenu(),
-            ChooseContent()
-          ],
-        ),
+      body: Row(
+        children: [
+          HomeMenu(),
+          ChooseContent(),
+        ],
       ),
     );
   }

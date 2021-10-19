@@ -10,15 +10,11 @@ class SQLiteDbProvider {
   static final SQLiteDbProvider _instance = SQLiteDbProvider._private();
   static SQLiteDbProvider get instance => _instance;
 
-  Database ?_database;
+  late Database _database;
 
-  Future<Database> get database async {
-    if (_database == null) 
-      _database = await initDB();
-    return _database!;
-  }
+  Database get database => _database;
 
-  initDB() async {
+  Future<Database> initDatabase() async {
     Directory documentsDirectory = await getApplicationDocumentsDirectory();
     String path = join(documentsDirectory.path, "my_song_book.db");
 
@@ -74,6 +70,8 @@ class SQLiteDbProvider {
         print(path);
     var db = await databaseFactory.openDatabase(path, options: options);
 
-    return db;
+    _database = db;
+
+    return _database;
   }
 }
