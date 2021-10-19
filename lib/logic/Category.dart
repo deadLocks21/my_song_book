@@ -2,10 +2,10 @@ import 'dart:convert';
 
 import 'package:flutter/foundation.dart';
 import 'package:my_song_book/logic/Sheet.dart';
-import 'package:my_song_book/managers/SheetsProvider.dart';
+import 'package:my_song_book/database/SheetsTable.dart';
 
 class Category {
-  final _sheetsProvider = SheetProvider.instance;
+  final _sheetsTable = SheetsTable.instance;
 
   int id;
   String label;
@@ -23,7 +23,7 @@ class Category {
     List<Sheet> sheets = [];
 
     for(int i = 0; i < _sheets.length; i++)
-      sheets.add(_sheetsProvider.sheets[_sheets[i]]);
+      sheets.add(_sheetsTable.sheets[_sheets[i]]);
 
     return sheets;
   }

@@ -5,10 +5,10 @@ import 'package:my_song_book/database/DbProvider.dart';
 import 'package:my_song_book/logic/Author.dart';
 import 'package:my_song_book/logic/Sheet.dart';
 import 'package:my_song_book/logic/Tone.dart';
-import 'package:my_song_book/managers/AuthorsProvider.dart';
+import 'package:my_song_book/database/AuthorsTable.dart';
 import 'package:my_song_book/managers/InitializationManager.dart';
-import 'package:my_song_book/managers/SheetsProvider.dart';
-import 'package:my_song_book/managers/TonesProvider.dart';
+import 'package:my_song_book/database/SheetsTable.dart';
+import 'package:my_song_book/database/TonesTable.dart';
 import 'package:sqflite_common/sqlite_api.dart';
 
 class InitializationPage extends StatefulWidget {
@@ -20,9 +20,9 @@ class InitializationPage extends StatefulWidget {
 
 class _InitializationPageState extends State<InitializationPage> {
   final initializationManager = InitializationManager.instance;
-  final authorsProvider = AuthorsProvider.instance;
-  final sheetsProvider = SheetProvider.instance;
-  final tonesProvider = TonesProvider.instance;
+  final authorsTable = AuthorsTable.instance;
+  final sheetsTable = SheetsTable.instance;
+  final tonesTable = TonesTable.instance;
   final database = SQLiteDbProvider.instance;
 
   Future<Database> asyncInitialization() async {
@@ -32,20 +32,20 @@ class _InitializationPageState extends State<InitializationPage> {
     initializationManager.changeState("Naissance des auteurs");
     List authors = await db.query('authors');
     for (var author in authors) {
-      authorsProvider.authors.add(new Author.fromMap({'id': author['id'], 'name': author['name']}));
+      authorsTable.authors.add(new Author.fromMap({'id': author['id'], 'name': author['name']}));
     }
 
     initializationManager.changeState("Je vérifie les tonalités existantes.");
     List tones = await db.query('tones');
     for (var tone in tones) {
-      tonesProvider.tones.add(new Tone.fromMap({'id': tone['id'], 'name': tone['name']}));
+      tonesTable.tones.add(new Tone.fromMap({'id': tone['id'], 'name': tone['name']}));
     }
 
     initializationManager
         .changeState("Les partitions sont en train d'être récupérées.");
     List sheets = await db.query('sheets');
     for (var sheet in sheets) {
-      sheetsProvider.sheets.add(new Sheet.fromMap({
+      sheetsTable.sheets.add(new Sheet.fromMap({
         'id': sheet['id'],
         'code': sheet['code'],
         'name': sheet['name'],

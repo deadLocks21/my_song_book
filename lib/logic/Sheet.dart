@@ -1,11 +1,11 @@
 import 'dart:convert';
 
-import 'package:my_song_book/managers/AuthorsProvider.dart';
-import 'package:my_song_book/managers/TonesProvider.dart';
+import 'package:my_song_book/database/AuthorsTable.dart';
+import 'package:my_song_book/database/TonesTable.dart';
 
 class Sheet {
-  final _tonesProvider = TonesProvider.instance;
-  final _authorProvider = AuthorsProvider.instance;
+  final _tonesTable = TonesTable.instance;
+  final _authorProvider = AuthorsTable.instance;
 
   int id;
   String code;
@@ -14,7 +14,7 @@ class Sheet {
   late int _tone;
   int favorite;
 
-  get tone => _tonesProvider.tones[_tone];
+  get tone => _tonesTable.tones[_tone];
   get author => _authorProvider.authors[_author];
 
   Sheet({

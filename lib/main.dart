@@ -14,8 +14,8 @@ void main() {
       final top = 0.0;
       final frame = Rect.fromLTWH(left, top, width, height);
       window_size.setWindowFrame(frame);
-      window_size.setWindowMinSize(Size(0.8 * width, 0.8 * height));
-      window_size.setWindowMaxSize(Size(1.5 * width, 1.5 * height));
+      window_size.setWindowMinSize(Size(0.3 * width, 0.3 * height));
+      window_size.setWindowMaxSize(Size(1.2 * width, 1.2 * height));
     }
   });
   runApp(MyApp());

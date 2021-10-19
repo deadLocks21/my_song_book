@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:my_song_book/components/InitializationPage.dart';
 import 'package:my_song_book/managers/InitializationManager.dart';
 
 class DisplayState extends StatefulWidget {
