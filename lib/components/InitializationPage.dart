@@ -2,7 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:my_song_book/components/HomePage.dart';
 import 'package:my_song_book/components/Initialization/DisplayState.dart';
 import 'package:my_song_book/database/DbProvider.dart';
+import 'package:my_song_book/logic/Author.dart';
+import 'package:my_song_book/logic/Sheet.dart';
+import 'package:my_song_book/logic/Tone.dart';
+import 'package:my_song_book/managers/AuthorsProvider.dart';
 import 'package:my_song_book/managers/InitializationManager.dart';
+import 'package:my_song_book/managers/SheetsProvider.dart';
+import 'package:my_song_book/managers/TonesProvider.dart';
 import 'package:sqflite_common/sqlite_api.dart';
 
 class InitializationPage extends StatefulWidget {
@@ -14,16 +20,43 @@ class InitializationPage extends StatefulWidget {
 
 class _InitializationPageState extends State<InitializationPage> {
   final initializationManager = InitializationManager.instance;
+  final authorsProvider = AuthorsProvider.instance;
+  final sheetsProvider = SheetProvider.instance;
+  final tonesProvider = TonesProvider.instance;
   final database = SQLiteDbProvider.instance;
 
   Future<Database> asyncInitialization() async {
-    initializationManager.changeState("GET DB");
-    var db = await database.initDatabase();
-    print("Get database");
+    initializationManager.changeState("Récupération de la base de données");
+    Database db = await database.initDatabase();
 
-    initializationManager.changeState("GET the delay");
-    await Future.delayed(Duration(seconds: 2));
-    print("Wait the delay");
+    initializationManager.changeState("Naissance des auteurs");
+    List authors = await db.query('authors');
+    for (var author in authors) {
+      authorsProvider.authors.add(new Author.fromMap({'id': author['id'], 'name': author['name']}));
+    }
+
+    initializationManager.changeState("Je vérifie les tonalités existantes.");
+    List tones = await db.query('tones');
+    for (var tone in tones) {
+      tonesProvider.tones.add(new Tone.fromMap({'id': tone['id'], 'name': tone['name']}));
+    }
+
+    initializationManager
+        .changeState("Les partitions sont en train d'être récupérées.");
+    List sheets = await db.query('sheets');
+    for (var sheet in sheets) {
+      sheetsProvider.sheets.add(new Sheet.fromMap({
+        'id': sheet['id'],
+        'code': sheet['code'],
+        'name': sheet['name'],
+        'author': sheet['author'],
+        'tone': sheet['tone'],
+        'favorite': int.parse(sheet['favorite']),
+      }));
+    }
+
+    initializationManager.changeState("Je récupère tes catégories.");
+    print(await db.query('categories')); // TODO Add categories
 
     return db;
   }
@@ -34,7 +67,7 @@ class _InitializationPageState extends State<InitializationPage> {
         future: asyncInitialization(),
         builder: (BuildContext context, AsyncSnapshot<Database> snapshot) {
           Widget widget;
-           
+
           if (snapshot.hasData) {
             widget = HomePage();
           } else if (snapshot.hasError) {

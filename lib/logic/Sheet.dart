@@ -25,8 +25,8 @@ class Sheet {
     tone = 0,
     this.favorite = 0,
   }) {
-    this._author = author;
-    this._tone = tone;
+    this._author = author ?? 0;
+    this._tone = tone ?? 0;
   }
 
   Map<String, dynamic> toMap() {
