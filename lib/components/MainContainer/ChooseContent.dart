@@ -32,6 +32,12 @@ class _ChooseContentState extends State<ChooseContent>
   }
 
   @override
+  void dispose() {
+    super.dispose();
+    _controller.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     _controller.forward(from: 0);
     return ScaleTransition(

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:my_song_book/components/Pages/Sheets/SheetsList.dart';
+import 'package:my_song_book/database/FavoritesSheetsTable.dart';
 
 class FavoritesPage extends StatefulWidget {
   FavoritesPage({Key? key}) : super(key: key);
@@ -8,8 +10,10 @@ class FavoritesPage extends StatefulWidget {
 }
 
 class _FavoritesPageState extends State<FavoritesPage> {
+  final favoritesSheetsTable = FavoritesSheetsTable.instance;
+
   @override
   Widget build(BuildContext context) {
-    return Center(child: Text('Voir toutes les partitions favorites.'),);
+    return SheetsList(sheets: favoritesSheetsTable.getFavorites(),);
   }
 }
