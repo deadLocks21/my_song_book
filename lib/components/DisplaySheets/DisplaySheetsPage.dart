@@ -19,6 +19,7 @@ class _DisplaySheetsPageState extends State<DisplaySheetsPage> {
   @override
   void initState() {
     super.initState();
+    displayedSheetManager.readMode = false;
     displayedSheetManager.addListener(editPage);
   }
 

@@ -49,9 +49,10 @@ class _InitializationPageState extends State<InitializationPage> {
         'id': sheet['id'],
         'code': sheet['code'],
         'name': sheet['name'],
-        'author': sheet['author'],
-        'tone': sheet['tone'],
+        '_author': sheet['author'],
+        '_tone': sheet['tone'],
         'favorite': int.parse(sheet['favorite']),
+        'sheets': sheet['sheets'] == null ? "[]" : sheet['sheets']  
       }));
     }
 

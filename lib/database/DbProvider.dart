@@ -51,6 +51,7 @@ class SQLiteDbProvider {
               author INTEGER DEFAULT NULL,
               tone INTEGER DEFAULT NULL,
               favorite CHAR(1) DEFAULT '0',
+              sheets TEXT DEFAULT '',
               FOREIGN KEY (author) REFERENCES authors(id),
               FOREIGN KEY (tone) REFERENCES tones(id)
           );
