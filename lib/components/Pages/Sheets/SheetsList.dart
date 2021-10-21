@@ -3,27 +3,37 @@
 import 'package:flutter/material.dart';
 import 'package:my_song_book/components/Pages/Sheets/SheetTile.dart';
 import 'package:my_song_book/logic/Sheet.dart';
-import 'package:my_song_book/managers/DisplayedSheetManager.dart';
+import 'package:my_song_book/managers/DisplayedListManager.dart';
 
 class SheetsList extends StatefulWidget {
-  List<Sheet> sheets;
-  SheetsList({Key? key, List<Sheet> this.sheets = const []}) : super(key: key);
+  SheetsList({Key? key}) : super(key: key);
 
   @override
   _SheetsListState createState() => _SheetsListState();
 }
 
 class _SheetsListState extends State<SheetsList> {
-  final displayedSheetManager = DisplayedSheetManager.instance;
+  final displayedListManager = DisplayedListManager.instance;
 
   @override
   void initState() {
     super.initState();
-    displayedSheetManager.sheets = widget.sheets;
+    displayedListManager.addListener(refresh);
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    displayedListManager.removeListener(refresh);
+  }
+
+  refresh() {
+    setState(() {});
   }
 
   @override
   Widget build(BuildContext context) {
+    List<Sheet> sheets = displayedListManager.displayedList;
     return SizedBox(
       height: MediaQuery.of(context).size.height * 0.8,
       child: GridView.count(
@@ -32,10 +42,10 @@ class _SheetsListState extends State<SheetsList> {
         crossAxisSpacing: 40,
         mainAxisSpacing: 40,
         childAspectRatio: 2.0,
-        crossAxisCount: ((MediaQuery.of(context).size.width * 0.93) / 350).round(),
+        crossAxisCount:
+            ((MediaQuery.of(context).size.width * 0.93) / 350).round(),
         children: <Widget>[
-          for (var i = 0; i < widget.sheets.length; i++)
-            SheetTile(widget.sheets[i])
+          for (var i = 0; i < sheets.length; i++) SheetTile(sheets[i])
         ],
       ),
     );

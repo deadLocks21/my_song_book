@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:my_song_book/components/Pages/Sheets/SheetsList.dart';
 import 'package:my_song_book/database/FavoritesSheetsTable.dart';
+import 'package:my_song_book/managers/DisplayedListManager.dart';
 import 'package:my_song_book/managers/DisplayedSheetManager.dart';
 
 class FavoritesPage extends StatefulWidget {
@@ -13,17 +14,18 @@ class FavoritesPage extends StatefulWidget {
 class _FavoritesPageState extends State<FavoritesPage> {
   final favoritesSheetsTable = FavoritesSheetsTable.instance;
   final displayedSheetManager = DisplayedSheetManager.instance;
+  final displayedListManager = DisplayedListManager.instance;
 
   @override
   void initState() {
     super.initState();
-    displayedSheetManager.sheets = favoritesSheetsTable.favorites;
+    displayedListManager.list = favoritesSheetsTable.favorites;
   }
 
   @override
   Widget build(BuildContext context) {
     return favoritesSheetsTable.favorites.length != 0
-        ? SheetsList(sheets: favoritesSheetsTable.favorites)
+        ? SheetsList()
         : Padding(
             padding: const EdgeInsets.only(top: 24.0),
             child: Center(

@@ -20,7 +20,7 @@ class _ActionsButtonsState extends State<ActionsButtons> {
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
             Padding(
-              padding: const EdgeInsets.only(right: 32.0),
+              padding: const EdgeInsets.only(right: 24.0),
               child: FavoriteButton(),
             ),
             TheCloseButton()
