@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:my_song_book/components/Pages/Sheets/SheetTile.dart';
 import 'package:my_song_book/logic/Sheet.dart';
+import 'package:my_song_book/managers/DisplayedSheetManager.dart';
 
 class SheetsList extends StatefulWidget {
   List<Sheet> sheets;
@@ -13,6 +14,14 @@ class SheetsList extends StatefulWidget {
 }
 
 class _SheetsListState extends State<SheetsList> {
+  final displayedSheetManager = DisplayedSheetManager.instance;
+
+  @override
+  void initState() {
+    super.initState();
+    displayedSheetManager.sheets = widget.sheets;
+  }
+
   @override
   Widget build(BuildContext context) {
     return SizedBox(

@@ -7,7 +7,15 @@ class DisplayedSheetManager  extends ChangeNotifier {
       DisplayedSheetManager._private();
   static DisplayedSheetManager get instance => _instance;
 
+  late Sheet sheet;
+  late List<Sheet> sheets;
   bool readMode = false;
+
+  setSheet(Sheet sheet) {
+    this.sheet = sheet;
+    notifyListeners();
+  }
+
 
   changeReadMode() {
     readMode = !readMode;

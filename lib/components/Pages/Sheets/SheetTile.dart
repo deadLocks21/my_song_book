@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:my_song_book/components/DisplaySheets/DisplaySheetsPage.dart';
 import 'package:my_song_book/home_menu_icons_icons.dart';
 import 'package:my_song_book/logic/Sheet.dart';
+import 'package:my_song_book/managers/DisplayedSheetManager.dart';
 import 'package:my_song_book/managers/SheetManager.dart';
 
 class SheetTile extends StatefulWidget {
@@ -15,6 +16,7 @@ class SheetTile extends StatefulWidget {
 }
 
 class _SheetTileState extends State<SheetTile> {
+  final displayedSheetManager = DisplayedSheetManager.instance;
   late SheetManager _manager;
   late IconData icon;
 
@@ -35,6 +37,7 @@ class _SheetTileState extends State<SheetTile> {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
+        displayedSheetManager.sheet = widget.sheet;
         Navigator.push(
           context,
           MaterialPageRoute(builder: (context) => DisplaySheetsPage()),
