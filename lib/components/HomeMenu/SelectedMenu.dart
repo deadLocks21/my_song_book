@@ -52,7 +52,7 @@ class _SelectedMenuState extends State<SelectedMenu> {
         height: 60,
         width: 60,
         decoration: BoxDecoration(
-          color: Colors.red,
+          color: Color(0xFFEC3E1E),
           shape: BoxShape.circle,
         ),
         child: Text(" "),
