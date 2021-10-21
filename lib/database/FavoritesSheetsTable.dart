@@ -6,4 +6,8 @@ class FavoritesSheetsTable {
   static FavoritesSheetsTable get instance => _instance;
 
   List<Sheet> favorites = [];
+
+  sort() {
+    favorites.sort((Sheet s1, Sheet s2) => s1.code.compareTo(s2.code));
+  }
 }

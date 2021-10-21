@@ -20,6 +20,8 @@ class SheetManager {
     else
       favoritesSheetsTable.favorites.add(sheet);
 
+    favoritesSheetsTable.sort();
+
     await db.execute('UPDATE sheets SET favorite = ? WHERE id = ?;',
         [sheet.favorite, sheet.id]);
 
