@@ -17,11 +17,17 @@ class _FavoritesPageState extends State<FavoritesPage> {
   @override
   void initState() {
     super.initState();
-    displayedSheetManager.sheets = favoritesSheetsTable.getFavorites();
+    displayedSheetManager.sheets = favoritesSheetsTable.favorites;
   }
-  
+
   @override
   Widget build(BuildContext context) {
-    return SheetsList(sheets: favoritesSheetsTable.getFavorites(),);
+    return favoritesSheetsTable.favorites.length != 0
+        ? SheetsList(sheets: favoritesSheetsTable.favorites)
+        : Padding(
+            padding: const EdgeInsets.only(top: 24.0),
+            child: Center(
+                child: Text(
+                    "Désolé, tu n'as pas de chants dans tes favoris ...")));
   }
 }

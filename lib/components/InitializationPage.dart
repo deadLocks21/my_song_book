@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:my_song_book/components/HomePage.dart';
 import 'package:my_song_book/components/Initialization/DisplayState.dart';
 import 'package:my_song_book/database/DbProvider.dart';
+import 'package:my_song_book/database/FavoritesSheetsTable.dart';
 import 'package:my_song_book/logic/Author.dart';
 import 'package:my_song_book/logic/Sheet.dart';
 import 'package:my_song_book/logic/Tone.dart';
@@ -24,6 +25,7 @@ class _InitializationPageState extends State<InitializationPage> {
   final sheetsTable = SheetsTable.instance;
   final tonesTable = TonesTable.instance;
   final database = SQLiteDbProvider.instance;
+  final favoriteSheetsTable = FavoritesSheetsTable.instance;
 
   Future<Database> asyncInitialization() async {
     initializationManager.changeState("Récupération de la base de données");
@@ -57,7 +59,12 @@ class _InitializationPageState extends State<InitializationPage> {
     }
 
     initializationManager.changeState("Je récupère tes catégories.");
-    print(await db.query('categories')); // TODO Add categories
+    await db.query('categories'); // TODO Add categories
+
+    initializationManager.changeState("Ajout des favoris");
+    for (var sheet in sheetsTable.sheets) 
+      if (sheet.favorite == 1) 
+        favoriteSheetsTable.favorites.add(sheet);
 
     return db;
   }

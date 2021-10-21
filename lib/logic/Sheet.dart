@@ -49,7 +49,6 @@ class Sheet extends ChangeNotifier {
       tone = 0,
       favorite = 0,
       String sheets = "[]"}) {
-    print(author);
     this._author = author ?? 0;
     this._tone = tone ?? 0;
     this._favorite = favorite ?? 0;

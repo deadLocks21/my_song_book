@@ -68,7 +68,6 @@ class SQLiteDbProvider {
           );
           ''');
         });
-        print(path);
     var db = await databaseFactory.openDatabase(path, options: options);
 
     _database = db;
