@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:my_song_book/components/DisplaySheets/Buttons/abstract/ChangeSheetButton.dart';
 import 'package:my_song_book/components/DisplaySheets/Buttons/GoBackButton.dart';
 import 'package:my_song_book/components/DisplaySheets/Buttons/GoForwardButton.dart';
-import 'package:my_song_book/components/DisplaySheets/Buttons/TopRightButtons/TopRightButtons.dart';
-import 'package:my_song_book/components/DisplaySheets/DisplaySong/DisplaySong.dart';
-import 'package:my_song_book/components/DisplaySheets/PlaySong/PlaySong.dart';
+import 'package:my_song_book/components/DisplaySheets/Buttons/ActionsButtons.dart';
+import 'package:my_song_book/components/DisplaySheets/PlaySong.dart';
 import 'package:my_song_book/managers/DisplayedSheetManager.dart';
 
 class DisplaySheetsPage extends StatefulWidget {
@@ -19,7 +19,6 @@ class _DisplaySheetsPageState extends State<DisplaySheetsPage> {
   @override
   void initState() {
     super.initState();
-    displayedSheetManager.readMode = false;
     displayedSheetManager.addListener(editPage);
   }
 
@@ -41,10 +40,10 @@ class _DisplaySheetsPageState extends State<DisplaySheetsPage> {
         height: MediaQuery.of(context).size.height,
         child: Stack(
           children: [
-            displayedSheetManager.readMode ? PlaySong() : DisplaySong(),
+            PlaySong(),
             GoBackButton(),
             GoForwardButton(),
-            TopRightButton(),
+            ActionsButtons(),
           ],
         ),
       ),

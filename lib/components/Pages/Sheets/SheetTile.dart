@@ -24,7 +24,20 @@ class _SheetTileState extends State<SheetTile> {
   void initState() {
     super.initState();
     _manager = new SheetManager(sheet: widget.sheet);
+    widget.sheet.addListener(refresh);
     chooseIcon();
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    widget.sheet.removeListener(refresh);
+  }
+
+  void refresh() {
+    setState(() {
+      chooseIcon();
+    });
   }
 
   void chooseIcon() {
@@ -66,12 +79,18 @@ class _SheetTileState extends State<SheetTile> {
                 ),
               ),
               Align(
-                alignment: Alignment.topLeft,
+                alignment: Alignment.center,
                 child: Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text(widget.sheet.code),
-                    Text(widget.sheet.name),
+                    Text(
+                      widget.sheet.code,
+                      style: TextStyle(fontWeight: FontWeight.bold),
+                    ),
+                    Text(
+                      widget.sheet.name,
+                      textAlign: TextAlign.center,
+                    ),
                   ],
                 ),
               ),

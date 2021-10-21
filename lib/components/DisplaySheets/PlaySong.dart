@@ -12,15 +12,16 @@ class PlaySong extends StatefulWidget {
 
 class _PlaySongState extends State<PlaySong> {
   final displayedSheetManager = DisplayedSheetManager.instance;
-  
+
   @override
   Widget build(BuildContext context) {
     return Container(
       width: MediaQuery.of(context).size.width,
       height: MediaQuery.of(context).size.height,
+      color: Colors.black,
       child: SingleChildScrollView(
           child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
           for (int i = 0; i < displayedSheetManager.sheet.sheets.length; i++)
             Image.file(

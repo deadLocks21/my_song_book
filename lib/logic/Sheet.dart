@@ -1,11 +1,12 @@
 import 'dart:convert';
 
+import 'package:flutter/foundation.dart';
 import 'package:my_song_book/database/AuthorsTable.dart';
 import 'package:my_song_book/database/TonesTable.dart';
 import 'package:my_song_book/logic/Author.dart';
 import 'package:my_song_book/logic/Tone.dart';
 
-class Sheet {
+class Sheet extends ChangeNotifier {
   final _tonesTable = TonesTable.instance;
   final _authorProvider = AuthorsTable.instance;
 
@@ -14,7 +15,8 @@ class Sheet {
   String name;
   late int _author;
   late int _tone;
-  int favorite;
+  late int _favorite;
+
   late List sheets;
 
   Tone get tone {
@@ -33,17 +35,24 @@ class Sheet {
       return new Author(id: 0);
   }
 
+  int get favorite => _favorite;  
+  set favorite(int favorite) {
+    _favorite = favorite;
+    notifyListeners();
+  }
+
   Sheet(
       {this.id = 0,
       this.code = "",
       this.name = "",
       author = 0,
       tone = 0,
-      this.favorite = 0,
+      favorite = 0,
       String sheets = "[]"}) {
     print(author);
     this._author = author ?? 0;
     this._tone = tone ?? 0;
+    this._favorite = favorite ?? 0;
     this.sheets = jsonDecode(sheets.replaceAll("'", "\""));
   }
 

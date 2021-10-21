@@ -31,6 +31,7 @@ class _SheetsListState extends State<SheetsList> {
         padding: const EdgeInsets.all(20),
         crossAxisSpacing: 40,
         mainAxisSpacing: 40,
+        childAspectRatio: 2.0,
         crossAxisCount: ((MediaQuery.of(context).size.width * 0.93) / 350).round(),
         children: <Widget>[
           for (var i = 0; i < widget.sheets.length; i++)

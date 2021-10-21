@@ -9,15 +9,9 @@ class DisplayedSheetManager extends ChangeNotifier {
 
   late Sheet sheet;
   late List<Sheet> sheets;
-  bool readMode = false;
 
   setSheet(Sheet sheet) {
     this.sheet = sheet;
-    notifyListeners();
-  }
-
-  changeReadMode() {
-    readMode = !readMode;
     notifyListeners();
   }
 

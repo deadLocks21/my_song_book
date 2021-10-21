@@ -33,9 +33,7 @@ class _TheCloseButtonState extends State<TheCloseButton> {
       height: 45,
       width: 45,
       decoration: BoxDecoration(
-        color: displayedSheetManager.readMode
-            ? Color(0x77EC3E1E)
-            : Color(0xFFEC3E1E),
+        color: Color(0x77EC3E1E),
         shape: BoxShape.circle,
       ),
       child: IconButton(

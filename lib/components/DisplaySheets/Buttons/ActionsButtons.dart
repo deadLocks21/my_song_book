@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:my_song_book/components/DisplaySheets/Buttons/TopRightButtons/ReadModeButton.dart';
-import 'package:my_song_book/components/DisplaySheets/Buttons/TopRightButtons/TheCloseButton.dart';
+import 'package:my_song_book/components/DisplaySheets/Buttons/FavoriteButton.dart';
+import 'package:my_song_book/components/DisplaySheets/Buttons/TheCloseButton.dart';
 
-class TopRightButton extends StatefulWidget {
-  TopRightButton({Key? key}) : super(key: key);
+class ActionsButtons extends StatefulWidget {
+  ActionsButtons({Key? key}) : super(key: key);
 
   @override
-  _TopRightButtonState createState() => _TopRightButtonState();
+  _ActionsButtonsState createState() => _ActionsButtonsState();
 }
 
-class _TopRightButtonState extends State<TopRightButton> {
+class _ActionsButtonsState extends State<ActionsButtons> {
   @override
   Widget build(BuildContext context) {
     return Align(
@@ -21,7 +21,7 @@ class _TopRightButtonState extends State<TopRightButton> {
           children: [
             Padding(
               padding: const EdgeInsets.only(right: 32.0),
-              child: ReadModeButton(),
+              child: FavoriteButton(),
             ),
             TheCloseButton()
           ],
