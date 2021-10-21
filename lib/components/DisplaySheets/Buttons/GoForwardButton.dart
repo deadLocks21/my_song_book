@@ -17,6 +17,12 @@ class _GoForwardButtonState extends State<GoForwardButton> {
     displayedSheetManager.addListener(editPage);
   }
 
+  @override
+  void dispose() {
+    super.dispose();
+    displayedSheetManager.removeListener(editPage);
+  }
+
   editPage() {
     setState(() {});
   }
@@ -25,7 +31,7 @@ class _GoForwardButtonState extends State<GoForwardButton> {
   Widget build(BuildContext context) {
     return Align(
       alignment: Alignment.centerRight,
-      child: InkWell(
+      child: displayedSheetManager.hasForward() ? InkWell(
         child: Container(
           height: MediaQuery.of(context).size.height * 0.9,
           width: MediaQuery.of(context).size.width * 0.05,
@@ -40,9 +46,9 @@ class _GoForwardButtonState extends State<GoForwardButton> {
           ),
         ),
         onTap: () {
-          print("RIGHT");
+          displayedSheetManager.forward();
         },
-      ),
+      ) : null,
     );
   }
 }

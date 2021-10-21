@@ -24,6 +24,12 @@ class _SelectedMenuState extends State<SelectedMenu> {
     first = true;
   }
 
+  @override
+  void dispose() {
+    super.dispose();
+    homeMenuStatesManager.removeListener(editPage);
+  }
+
   editPage() {
     setState(
       () {

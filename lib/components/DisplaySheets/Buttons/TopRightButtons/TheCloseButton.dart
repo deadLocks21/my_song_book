@@ -9,7 +9,7 @@ class TheCloseButton extends StatefulWidget {
 }
 
 class _TheCloseButtonState extends State<TheCloseButton> {
-    final displayedSheetManager = DisplayedSheetManager.instance;
+  final displayedSheetManager = DisplayedSheetManager.instance;
 
   @override
   void initState() {
@@ -17,17 +17,25 @@ class _TheCloseButtonState extends State<TheCloseButton> {
     displayedSheetManager.addListener(editPage);
   }
 
+  @override
+  void dispose() {
+    super.dispose();
+    displayedSheetManager.removeListener(editPage);
+  }
+
   editPage() {
     setState(() {});
   }
-  
+
   @override
   Widget build(BuildContext context) {
     return Container(
       height: 45,
       width: 45,
       decoration: BoxDecoration(
-        color: displayedSheetManager.readMode ? Color(0x77EC3E1E) : Color(0xFFEC3E1E),
+        color: displayedSheetManager.readMode
+            ? Color(0x77EC3E1E)
+            : Color(0xFFEC3E1E),
         shape: BoxShape.circle,
       ),
       child: IconButton(

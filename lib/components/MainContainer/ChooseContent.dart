@@ -35,6 +35,7 @@ class _ChooseContentState extends State<ChooseContent>
   void dispose() {
     super.dispose();
     _controller.dispose();
+    homeMenuStatesManager.removeListener(editPage);
   }
 
   @override

@@ -17,6 +17,12 @@ class _GoBackButtonState extends State<GoBackButton> {
     displayedSheetManager.addListener(editPage);
   }
 
+  @override
+  void dispose() {
+    super.dispose();
+    displayedSheetManager.removeListener(editPage);
+  }
+
   editPage() {
     setState(() {});
   }
@@ -25,7 +31,7 @@ class _GoBackButtonState extends State<GoBackButton> {
   Widget build(BuildContext context) {
     return Align(
       alignment: Alignment.centerLeft,
-      child: InkWell(
+      child: displayedSheetManager.hasBack() ? InkWell(
         child: Container(
           height: MediaQuery.of(context).size.height * 0.9,
           width: MediaQuery.of(context).size.width * 0.05,
@@ -40,9 +46,9 @@ class _GoBackButtonState extends State<GoBackButton> {
           ),
         ),
         onTap: () {
-          print("LEFT");
+          displayedSheetManager.back();
         },
-      ),
+      ) : null,
     );
   }
 }

@@ -21,19 +21,27 @@ class _MenuButtonState extends State<MenuButton> {
   @override
   void initState() {
     super.initState();
-    homeMenuStatesManager.addListener(() {
-      if (homeMenuStatesManager.index == widget.value) {
-        Timer(const Duration(milliseconds: 150), () {
-          setState(() {
-            color = Colors.white;
-          });
-        });
-      } else {
+    homeMenuStatesManager.addListener(editPage);
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    homeMenuStatesManager.removeListener(editPage);
+  }
+
+  editPage() {
+    if (homeMenuStatesManager.index == widget.value) {
+      Timer(const Duration(milliseconds: 150), () {
         setState(() {
-          color = Color(0xFFEC3E1E);
+          color = Colors.white;
         });
-      }
-    });
+      });
+    } else {
+      setState(() {
+        color = Color(0xFFEC3E1E);
+      });
+    }
   }
 
   @override

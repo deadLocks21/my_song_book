@@ -22,6 +22,12 @@ class _DisplaySheetsPageState extends State<DisplaySheetsPage> {
     displayedSheetManager.addListener(editPage);
   }
 
+  @override
+  void dispose() {
+    super.dispose();
+    displayedSheetManager.removeListener(editPage);
+  }
+
   editPage() {
     setState(() {});
   }

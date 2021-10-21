@@ -14,22 +14,25 @@ class _DisplayStateState extends State<DisplayState> {
   @override
   void initState() {
     super.initState();
-    initializationManager.addListener(() {
-      setState(() {});
-    });
+    initializationManager.addListener(editPage);
   }
 
   @override
   void dispose() {
     super.dispose();
-    initializationManager.dispose();
+    initializationManager.removeListener(editPage);
+  }
+
+  editPage() {
+    setState(() {});
   }
 
   @override
   Widget build(BuildContext context) {
     return Text(
       initializationManager.state,
-      style: TextStyle(fontSize: 16, color: Colors.black, decoration: TextDecoration.none),
+      style: TextStyle(
+          fontSize: 16, color: Colors.black, decoration: TextDecoration.none),
     );
   }
 }
