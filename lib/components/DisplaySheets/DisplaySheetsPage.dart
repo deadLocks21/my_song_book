@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:my_song_book/components/DisplaySheets/Buttons/GoBackButton.dart';
 import 'package:my_song_book/components/DisplaySheets/Buttons/GoForwardButton.dart';
 import 'package:my_song_book/components/DisplaySheets/Buttons/TopRightButtons/TopRightButtons.dart';
-import 'package:my_song_book/components/DisplaySheets/GoBackButton/GoBackButton.dart';
+import 'package:my_song_book/components/DisplaySheets/DisplaySong/DisplaySong.dart';
+import 'package:my_song_book/components/DisplaySheets/PlaySong/PlaySong.dart';
+import 'package:my_song_book/managers/DisplayedSheetManager.dart';
 
 class DisplaySheetsPage extends StatefulWidget {
   DisplaySheetsPage({Key? key}) : super(key: key);
@@ -11,6 +14,18 @@ class DisplaySheetsPage extends StatefulWidget {
 }
 
 class _DisplaySheetsPageState extends State<DisplaySheetsPage> {
+  final displayedSheetManager = DisplayedSheetManager.instance;
+
+  @override
+  void initState() {
+    super.initState();
+    displayedSheetManager.addListener(editPage);
+  }
+
+  editPage() {
+    setState(() {});
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -19,6 +34,7 @@ class _DisplaySheetsPageState extends State<DisplaySheetsPage> {
         height: MediaQuery.of(context).size.height,
         child: Stack(
           children: [
+            displayedSheetManager.readMode ? PlaySong() : DisplaySong(),
             GoBackButton(),
             GoForwardButton(),
             TopRightButton(),

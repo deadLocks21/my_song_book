@@ -20,6 +20,12 @@ class _DisplayStateState extends State<DisplayState> {
   }
 
   @override
+  void dispose() {
+    super.dispose();
+    initializationManager.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Text(
       initializationManager.state,
