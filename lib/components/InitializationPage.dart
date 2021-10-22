@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:my_song_book/components/HomePage.dart';
 import 'package:my_song_book/components/Initialization/DisplayState.dart';
+import 'package:my_song_book/database/CategoriesTable.dart';
 import 'package:my_song_book/database/DbProvider.dart';
 import 'package:my_song_book/database/FavoritesSheetsTable.dart';
 import 'package:my_song_book/logic/Author.dart';
+import 'package:my_song_book/logic/Category.dart';
 import 'package:my_song_book/logic/Sheet.dart';
 import 'package:my_song_book/logic/Tone.dart';
 import 'package:my_song_book/database/AuthorsTable.dart';
@@ -26,6 +28,7 @@ class _InitializationPageState extends State<InitializationPage> {
   final tonesTable = TonesTable.instance;
   final database = SQLiteDbProvider.instance;
   final favoriteSheetsTable = FavoritesSheetsTable.instance;
+  final categoriesTable = CategoriesTable.instance;
 
   Future<Database> asyncInitialization() async {
     initializationManager.changeState("Récupération de la base de données");
@@ -43,6 +46,16 @@ class _InitializationPageState extends State<InitializationPage> {
       tonesTable.tones.add(new Tone.fromMap({'id': tone['id'], 'name': tone['name']}));
     }
 
+        initializationManager.changeState("Je récupère tes catégories.");
+    List categories = await db.query('categories');
+    for (var category in categories) {
+      categoriesTable.categories.add(new Category.fromMap({
+        'id': category['id'],
+        'label': category['label'],
+        'color': category['color'],
+      }));
+    }
+
     initializationManager
         .changeState("Les partitions sont en train d'être récupérées.");
     List sheets = await db.query('sheets');
@@ -58,8 +71,21 @@ class _InitializationPageState extends State<InitializationPage> {
       }));
     }
 
-    initializationManager.changeState("Je récupère tes catégories.");
-    await db.query('categories'); // TODO Add categories
+    initializationManager.changeState("Je fais matcher tes catégories avec tes chants.");
+    List sheets_categories = await db.query('sheets_categories');
+    for (var item in sheets_categories) {
+      Category category = categoriesTable.categories.firstWhere((Category element) => element.id == item['id_category']);
+      Sheet sheet = sheetsTable.sheets.firstWhere((Sheet element) => element.id == item['id_sheet']);
+      category.sheets.add(sheet);
+      sheet.categories.add(category);
+      print("${sheet.id} - ${category.id}");
+    //   categoriesTable.categories.add(new Category.fromMap({
+    //     'id': category['id'],
+    //     'label': category['label'],
+    //     'color': category['color'],
+    //   }));
+    }
+    // print(categoriesTable.categories);
 
     initializationManager.changeState("Ajout des favoris");
     for (var sheet in sheetsTable.sheets) 
