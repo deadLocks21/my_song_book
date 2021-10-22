@@ -28,7 +28,8 @@ class SQLiteDbProvider {
           db.execute('''
           CREATE TABLE categories (
               id INTEGER PRIMARY KEY AUTOINCREMENT,
-              label VARCHAR(67)
+              label VARCHAR(67),
+              color CHAR(8)
           );
           ''');
           db.execute('''

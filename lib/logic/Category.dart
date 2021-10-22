@@ -1,6 +1,4 @@
-import 'dart:convert';
-
-import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
 import 'package:my_song_book/logic/Sheet.dart';
 import 'package:my_song_book/database/SheetsTable.dart';
 
@@ -9,11 +7,13 @@ class Category {
 
   int id;
   String label;
+  Color color;
   late List<int> _sheets;
 
   Category({
     this.id = 0,
     this.label = "",
+    this.color = Colors.white,
     sheets = const [],
   }) {
     this._sheets = sheets;
@@ -28,40 +28,15 @@ class Category {
     return sheets;
   }
 
-  Map<String, dynamic> toMap() {
-    return {
-      'id': id,
-      'label': label,
-      'sheets': sheets,
-    };
-  }
-
   factory Category.fromMap(Map<String, dynamic> map) {
     return Category(
       id: map['id'],
       label: map['label'],
+      color: map['color'],
       sheets: List<int>.from(map['sheets']),
     );
   }
 
-  String toJson() => json.encode(toMap());
-
-  factory Category.fromJson(String source) =>
-      Category.fromMap(json.decode(source));
-
   @override
-  String toString() => 'Category(id: $id, label: $label, sheets: $sheets)';
-
-  @override
-  bool operator ==(Object other) {
-    if (identical(this, other)) return true;
-
-    return other is Category &&
-        other.id == id &&
-        other.label == label &&
-        listEquals(other.sheets, sheets);
-  }
-
-  @override
-  int get hashCode => id.hashCode ^ label.hashCode ^ sheets.hashCode;
+  String toString() => 'Category(id: $id, label: $label, color: $color, sheets: $sheets)';
 }
