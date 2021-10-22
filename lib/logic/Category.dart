@@ -10,7 +10,7 @@ class Category {
   Category({
     this.id = 0,
     this.label = "",
-    color,
+    color = "FFFFFFFF",
   }) {
     this.color = Color(int.parse('0x' + color));
   }

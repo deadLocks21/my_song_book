@@ -28,11 +28,13 @@ class _InitializationPageState extends State<InitializationPage> {
   final tonesTable = TonesTable.instance;
   final database = SQLiteDbProvider.instance;
   final favoriteSheetsTable = FavoritesSheetsTable.instance;
-  final categoriesTable = CategoriesTable.instance;
+  late CategoriesTable categoriesTable; // Needs the db to be initialized.
 
   Future<Database> asyncInitialization() async {
     initializationManager.changeState("Récupération de la base de données");
     Database db = await database.initDatabase();
+
+    categoriesTable = CategoriesTable.instance;
 
     initializationManager.changeState("Naissance des auteurs");
     List authors = await db.query('authors');
