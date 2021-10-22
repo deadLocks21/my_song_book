@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:my_song_book/components/DisplaySheets/DisplaySheetsPage.dart';
+import 'package:my_song_book/components/Pages/Sheets/CategoriesContainer.dart';
 import 'package:my_song_book/home_menu_icons_icons.dart';
 import 'package:my_song_book/logic/Sheet.dart';
 import 'package:my_song_book/managers/DisplayedSheetManager.dart';
@@ -94,6 +95,7 @@ class _SheetTileState extends State<SheetTile> {
                   ],
                 ),
               ),
+              CategoriesContainer(widget.sheet.categories)
             ],
           ),
         ),

@@ -78,14 +78,7 @@ class _InitializationPageState extends State<InitializationPage> {
       Sheet sheet = sheetsTable.sheets.firstWhere((Sheet element) => element.id == item['id_sheet']);
       category.sheets.add(sheet);
       sheet.categories.add(category);
-      print("${sheet.id} - ${category.id}");
-    //   categoriesTable.categories.add(new Category.fromMap({
-    //     'id': category['id'],
-    //     'label': category['label'],
-    //     'color': category['color'],
-    //   }));
     }
-    // print(categoriesTable.categories);
 
     initializationManager.changeState("Ajout des favoris");
     for (var sheet in sheetsTable.sheets) 
