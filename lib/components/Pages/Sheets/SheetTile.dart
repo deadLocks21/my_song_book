@@ -23,9 +23,7 @@ class _SheetTileState extends State<SheetTile> {
   @override
   void initState() {
     super.initState();
-    _manager = new SheetManager(sheet: widget.sheet);
     widget.sheet.addListener(refresh);
-    chooseIcon();
   }
 
   @override
@@ -48,6 +46,8 @@ class _SheetTileState extends State<SheetTile> {
 
   @override
   Widget build(BuildContext context) {
+    _manager = new SheetManager(sheet: widget.sheet);
+    chooseIcon();
     return InkWell(
       onTap: () {
         displayedSheetManager.sheet = widget.sheet;
