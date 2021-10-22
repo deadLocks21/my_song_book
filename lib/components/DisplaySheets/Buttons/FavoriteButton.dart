@@ -20,10 +20,7 @@ class _FavoriteButtonState extends State<FavoriteButton> {
   @override
   void initState() {
     super.initState();
-    sheetModification();
     displayedSheetManager.addListener(sheetModification);
-    _manager = new SheetManager(sheet: sheet);
-    chooseIcon();
   }
 
   @override
@@ -47,6 +44,9 @@ class _FavoriteButtonState extends State<FavoriteButton> {
 
   @override
   Widget build(BuildContext context) {
+    sheetModification();
+    _manager = new SheetManager(sheet: sheet);
+    chooseIcon();
     return IconButton(
       icon: Icon(icon),
       color: Color(0xFFEC3E1E),
