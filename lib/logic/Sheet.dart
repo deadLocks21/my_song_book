@@ -16,6 +16,7 @@ class Sheet extends ChangeNotifier {
   late int _author;
   late int _tone;
   late int _favorite;
+  late List<Category> categories;
 
   late List sheets;
 
@@ -35,7 +36,7 @@ class Sheet extends ChangeNotifier {
       return new Author(id: 0);
   }
 
-  int get favorite => _favorite;  
+  int get favorite => _favorite;
   set favorite(int favorite) {
     _favorite = favorite;
     notifyListeners();
@@ -48,7 +49,8 @@ class Sheet extends ChangeNotifier {
       author = 0,
       tone = 0,
       favorite = 0,
-      String sheets = "[]"}) {
+      String sheets = "[]",
+      this.categories = const []}) {
     this._author = author ?? 0;
     this._tone = tone ?? 0;
     this._favorite = favorite ?? 0;
@@ -64,6 +66,7 @@ class Sheet extends ChangeNotifier {
       '_tone': _tone,
       'favorite': favorite,
       'sheets': jsonEncode(sheets),
+      'categories': jsonEncode(categories),
     };
   }
 
@@ -76,6 +79,7 @@ class Sheet extends ChangeNotifier {
       tone: map['_tone'],
       favorite: map['favorite'],
       sheets: map['sheets'],
+      categories: map['categories']
     );
   }
 
@@ -85,7 +89,7 @@ class Sheet extends ChangeNotifier {
 
   @override
   String toString() {
-    return 'Sheet(id: $id, code: $code, name: $name, _author: $_author, _tone: $_tone, favorite: $favorite, sheets: $sheets)';
+    return 'Sheet(id: $id, code: $code, name: $name, _author: $_author, _tone: $_tone, favorite: $favorite, sheets: $sheets, categories: $categories)';
   }
 
   @override
@@ -99,7 +103,8 @@ class Sheet extends ChangeNotifier {
         other._author == _author &&
         other._tone == _tone &&
         other.favorite == favorite &&
-        other.sheets == sheets;
+        other.sheets == sheets &&
+        other.categories == categories;
   }
 
   @override
@@ -110,6 +115,7 @@ class Sheet extends ChangeNotifier {
         _author.hashCode ^
         _tone.hashCode ^
         favorite.hashCode ^
-        sheets.hashCode;
+        sheets.hashCode ^
+        categories.hashCode;
   }
 }
