@@ -95,7 +95,7 @@ class _SheetTileState extends State<SheetTile> {
                   ],
                 ),
               ),
-              CategoriesContainer(widget.sheet.categories)
+              CategoriesContainer(widget.sheet.categories, widget.sheet)
             ],
           ),
         ),

@@ -43,6 +43,16 @@ class Sheet extends ChangeNotifier {
     notifyListeners();
   }
 
+  addCategory(Category category) {
+    categories.add(category);
+    notifyListeners();
+  }
+
+  removeCategory(Category category) {
+    categories.remove(category);
+    notifyListeners();
+  }
+
   Sheet(
       {this.id = 0,
       this.code = "",

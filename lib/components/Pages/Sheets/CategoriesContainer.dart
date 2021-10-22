@@ -1,11 +1,15 @@
 // ignore_for_file: must_be_immutable
 
 import 'package:flutter/material.dart';
+import 'package:my_song_book/components/Pages/Sheets/CategoriesDialog/CategoriesDialog.dart';
 import 'package:my_song_book/logic/Category.dart';
+import 'package:my_song_book/logic/Sheet.dart';
+import 'package:my_song_book/managers/SheetCategorisedManager.dart';
 
 class CategoriesContainer extends StatefulWidget {
   List<Category> categories = [];
-  CategoriesContainer(this.categories, {Key? key})
+  Sheet sheet;
+  CategoriesContainer(this.categories, this.sheet, {Key? key})
       : super(key: key);
 
   @override
@@ -13,6 +17,24 @@ class CategoriesContainer extends StatefulWidget {
 }
 
 class _CategoriesContainerState extends State<CategoriesContainer> {
+  final sheetCategorisedManager = SheetCategorisedManager.instance;
+
+  @override
+  void initState() {
+    super.initState();
+    widget.sheet.addListener(refresh);
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    widget.sheet.removeListener(refresh);
+  }
+
+  refresh() {
+    setState(() {});
+  }
+
   @override
   Widget build(BuildContext context) {
     return Align(
@@ -41,7 +63,13 @@ class _CategoriesContainerState extends State<CategoriesContainer> {
             ),
           InkWell(
             onTap: () {
-              print("Categories manager");
+              showDialog(
+                context: context,
+                builder: (BuildContext context) {
+                  sheetCategorisedManager.sheet = widget.sheet;
+                  return CategoriesDialog();
+                },
+              );
             },
             child: Container(
               decoration: BoxDecoration(
