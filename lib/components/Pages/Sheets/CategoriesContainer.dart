@@ -32,7 +32,9 @@ class _CategoriesContainerState extends State<CategoriesContainer> {
   }
 
   refresh() {
-    setState(() {});
+    if (mounted) {
+      setState(() {});
+    }
   }
 
   @override

@@ -34,9 +34,11 @@ class _SheetTileState extends State<SheetTile> {
   }
 
   void refresh() {
-    setState(() {
-      chooseIcon();
-    });
+    if (mounted) {
+      setState(() {
+        chooseIcon();
+      });
+    }
   }
 
   void chooseIcon() {
