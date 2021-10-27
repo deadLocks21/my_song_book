@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:my_song_book/components/Pages/Sheets/SheetSearch.dart';
-import 'package:my_song_book/components/Pages/Sheets/SheetsList.dart';
+import 'package:my_song_book/components/Pages/Sheets/SheetsList/SheetsList.dart';
 import 'package:my_song_book/database/SheetsTable.dart';
-import 'package:my_song_book/logic/Sheet.dart';
 import 'package:my_song_book/managers/DisplayedListManager.dart';
 
 class SheetsPage extends StatefulWidget {

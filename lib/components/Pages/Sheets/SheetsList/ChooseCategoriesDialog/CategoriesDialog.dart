@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:my_song_book/components/Pages/Sheets/CategoriesDialog/CategoryTile.dart';
+import 'package:my_song_book/components/Pages/Sheets/SheetsList/ChooseCategoriesDialog/CategoryTile.dart';
 import 'package:my_song_book/database/CategoriesTable.dart';
 import 'package:my_song_book/logic/Category.dart';
 
