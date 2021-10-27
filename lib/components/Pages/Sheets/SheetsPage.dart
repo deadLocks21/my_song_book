@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:my_song_book/components/Pages/Sheets/CategoriesSelector/CategoriesChoice.dart';
 import 'package:my_song_book/components/Pages/Sheets/SheetSearch.dart';
 import 'package:my_song_book/components/Pages/Sheets/SheetsList/SheetsList.dart';
 import 'package:my_song_book/database/SheetsTable.dart';
@@ -26,6 +27,7 @@ class _SheetsPageState extends State<SheetsPage> {
     return Column(
       children: [
         SheetSearch(),
+        CategoriesChoice(),
         SheetsList()
       ],
     );

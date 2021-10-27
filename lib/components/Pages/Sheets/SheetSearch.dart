@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:my_song_book/logic/Sheet.dart';
-import 'package:my_song_book/managers/DisplayedListManager.dart';
+import 'package:my_song_book/managers/SearchASheetManager.dart';
 
 class SheetSearch extends StatefulWidget {
   SheetSearch({Key? key}) : super(key: key);
@@ -10,7 +9,7 @@ class SheetSearch extends StatefulWidget {
 }
 
 class _SheetSearchState extends State<SheetSearch> {
-  final displayedListManager = DisplayedListManager.instance;
+  final searchASheetManager = SearchASheetManager.instance;
   final _textController = TextEditingController();
 
   @override
@@ -40,12 +39,8 @@ class _SheetSearchState extends State<SheetSearch> {
               hintText: 'Entre le titre du chant ...',
             ),
             onChanged: (text) {
-              List<Sheet> newList = displayedListManager.list
-                  .where((Sheet element) =>
-                      element.code.contains(text) ||
-                      element.name.contains(text))
-                  .toList();
-              displayedListManager.displayedList = newList;
+              print(text);
+              searchASheetManager.text = text;
             },
           ),
         ),

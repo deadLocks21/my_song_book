@@ -35,7 +35,7 @@ class _SheetsListState extends State<SheetsList> {
   Widget build(BuildContext context) {
     List<Sheet> sheets = displayedListManager.displayedList;
     return SizedBox(
-      height: MediaQuery.of(context).size.height * 0.7,
+      height: MediaQuery.of(context).size.height * 0.67,
       child: GridView.count(
         primary: true,
         padding: const EdgeInsets.all(20),
