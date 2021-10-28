@@ -21,7 +21,6 @@ class SheetsList extends ChangeNotifier {
       name: map['name'],
       date: DateTime.parse(map['date']),
       list: []
-      // list: List<Sheet>.from(map['list']?.map((x) => Sheet.fromMap(x))),
     );
   }
 
