@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:my_song_book/managers/DisplayedSheetManager.dart';
+import 'package:my_song_book/managers/DisplaySheets/DisplayedSheetManager.dart';
 
 class TheCloseButton extends StatefulWidget {
   TheCloseButton({Key? key}) : super(key: key);

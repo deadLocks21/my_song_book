@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:my_song_book/managers/InitializationManager.dart';
+import 'package:my_song_book/managers/Initialization/InitializationManager.dart';
 
 class DisplayState extends StatefulWidget {
   DisplayState({Key? key}) : super(key: key);

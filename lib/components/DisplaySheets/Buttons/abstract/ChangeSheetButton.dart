@@ -1,7 +1,7 @@
 // ignore_for_file: must_be_immutable
 
 import 'package:flutter/material.dart';
-import 'package:my_song_book/managers/DisplayedSheetManager.dart';
+import 'package:my_song_book/managers/DisplaySheets/DisplayedSheetManager.dart';
 
 class ChangeSheetButton extends StatefulWidget {
   late bool left;

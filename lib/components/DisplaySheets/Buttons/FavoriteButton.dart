@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:my_song_book/home_menu_icons_icons.dart';
 import 'package:my_song_book/logic/Sheet.dart';
-import 'package:my_song_book/managers/DisplayedSheetManager.dart';
-import 'package:my_song_book/managers/SheetManager.dart';
+import 'package:my_song_book/managers/DisplaySheets/DisplayedSheetManager.dart';
+import 'package:my_song_book/managers/Sheets/SheetManager.dart';
 
 class FavoriteButton extends StatefulWidget {
   FavoriteButton({Key? key}) : super(key: key);
