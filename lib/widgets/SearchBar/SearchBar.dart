@@ -1,15 +1,18 @@
-import 'package:flutter/material.dart';
-import 'package:my_song_book/managers/SearchASheetManager.dart';
+// ignore_for_file: must_be_immutable
 
-class SheetSearch extends StatefulWidget {
-  SheetSearch({Key? key}) : super(key: key);
+import 'package:flutter/material.dart';
+import 'package:my_song_book/widgets/SearchBar/ISearchAnalyzer.dart';
+
+class SearchBar extends StatefulWidget {
+  ISearchAnalyzer analyzer;
+  String placeholder = "";
+  SearchBar({Key? key, required this.analyzer, this.placeholder = ""}) : super(key: key);
 
   @override
-  _SheetSearchState createState() => _SheetSearchState();
+  _SearchBarState createState() => _SearchBarState();
 }
 
-class _SheetSearchState extends State<SheetSearch> {
-  final searchASheetManager = SearchASheetManager.instance;
+class _SearchBarState extends State<SearchBar> {
   final _textController = TextEditingController();
 
   @override
@@ -39,8 +42,7 @@ class _SheetSearchState extends State<SheetSearch> {
               hintText: 'Entre le titre du chant ...',
             ),
             onChanged: (text) {
-              print(text);
-              searchASheetManager.text = text;
+              widget.analyzer.text = text;
             },
           ),
         ),
