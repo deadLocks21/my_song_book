@@ -4,9 +4,11 @@ import 'package:my_song_book/components/Initialization/DisplayState.dart';
 import 'package:my_song_book/database/CategoriesTable.dart';
 import 'package:my_song_book/database/DbProvider.dart';
 import 'package:my_song_book/database/FavoritesSheetsTable.dart';
+import 'package:my_song_book/database/SheetsListsTable.dart';
 import 'package:my_song_book/logic/Author.dart';
 import 'package:my_song_book/logic/Category.dart';
 import 'package:my_song_book/logic/Sheet.dart';
+import 'package:my_song_book/logic/SheetsList.dart';
 import 'package:my_song_book/logic/Tone.dart';
 import 'package:my_song_book/database/AuthorsTable.dart';
 import 'package:my_song_book/managers/InitializationManager.dart';
@@ -28,6 +30,7 @@ class _InitializationPageState extends State<InitializationPage> {
   final tonesTable = TonesTable.instance;
   final database = SQLiteDbProvider.instance;
   final favoriteSheetsTable = FavoritesSheetsTable.instance;
+  final sheetsListsTable = SheetsListsTable.instance;
   late CategoriesTable categoriesTable; // Needs the db to be initialized.
 
   Future<Database> asyncInitialization() async {
@@ -39,16 +42,18 @@ class _InitializationPageState extends State<InitializationPage> {
     initializationManager.changeState("Naissance des auteurs");
     List authors = await db.query('authors');
     for (var author in authors) {
-      authorsTable.authors.add(new Author.fromMap({'id': author['id'], 'name': author['name']}));
+      authorsTable.authors.add(
+          new Author.fromMap({'id': author['id'], 'name': author['name']}));
     }
 
     initializationManager.changeState("Je vérifie les tonalités existantes.");
     List tones = await db.query('tones');
     for (var tone in tones) {
-      tonesTable.tones.add(new Tone.fromMap({'id': tone['id'], 'name': tone['name']}));
+      tonesTable.tones
+          .add(new Tone.fromMap({'id': tone['id'], 'name': tone['name']}));
     }
 
-        initializationManager.changeState("Je récupère tes catégories.");
+    initializationManager.changeState("Je récupère tes catégories.");
     List categories = await db.query('categories');
     for (var category in categories) {
       categoriesTable.categories.add(new Category.fromMap({
@@ -69,23 +74,47 @@ class _InitializationPageState extends State<InitializationPage> {
         '_author': sheet['author'],
         '_tone': sheet['tone'],
         'favorite': int.parse(sheet['favorite']),
-        'sheets': sheet['sheets'] == null ? "[]" : sheet['sheets']  
+        'sheets': sheet['sheets'] == null ? "[]" : sheet['sheets']
       }));
     }
 
-    initializationManager.changeState("Je fais matcher tes catégories avec tes chants.");
+    initializationManager
+        .changeState("Je fais matcher tes catégories avec tes chants.");
     List sheets_categories = await db.query('sheets_categories');
     for (var item in sheets_categories) {
-      Category category = categoriesTable.categories.firstWhere((Category element) => element.id == item['id_category']);
-      Sheet sheet = sheetsTable.sheets.firstWhere((Sheet element) => element.id == item['id_sheet']);
+      Category category = categoriesTable.categories
+          .firstWhere((Category element) => element.id == item['id_category']);
+      Sheet sheet = sheetsTable.sheets
+          .firstWhere((Sheet element) => element.id == item['id_sheet']);
       category.sheets.add(sheet);
       sheet.categories.add(category);
     }
 
     initializationManager.changeState("Ajout des favoris");
-    for (var sheet in sheetsTable.sheets) 
-      if (sheet.favorite == 1) 
-        favoriteSheetsTable.favorites.add(sheet);
+    for (var sheet in sheetsTable.sheets)
+      if (sheet.favorite == 1) favoriteSheetsTable.favorites.add(sheet);
+
+    initializationManager
+        .changeState("Je récupère tes listes compte sur moi !!");
+    List lists = await db.query('lists');
+    for (var list in lists) {
+      sheetsListsTable.sheetslists.add(new SheetsList.fromMap({
+        'id': list['id'],
+        'name': list['name'],
+        'date': list['date'],
+      }));
+    }
+
+    initializationManager
+        .changeState("J'ajoute les chants à tes listes !!");
+    List sheets_lists = await db.query('sheets_lists');
+    for (var item in sheets_lists) {
+      SheetsList sheetsList = sheetsListsTable.sheetslists
+          .firstWhere((SheetsList element) => element.id == item['id_list']);
+      Sheet sheet = sheetsTable.sheets
+          .firstWhere((Sheet element) => element.id == item['id_sheet']);
+      sheetsList.list.add(sheet);
+    }
 
     return db;
   }
