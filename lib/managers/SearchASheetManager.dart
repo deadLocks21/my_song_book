@@ -14,7 +14,7 @@ class SearchASheetManager {
     bool add = _text.length < text.length;
     this._text = text.toLowerCase();
     List<Sheet> searchList =
-        add ? displayedListManager.displayedList : applyCategories(displayedListManager.list);
+        add ? displayedListManager.displayedList : applyCategories(displayedListManager.baseList);
     displayedListManager.displayedList = applyText(searchList);
   }
 
@@ -28,7 +28,7 @@ class SearchASheetManager {
   removeCategory(Category category) {
     this._categories.remove(category);
     displayedListManager.displayedList =
-        applyCategories(applyText(displayedListManager.list));
+        applyCategories(applyText(displayedListManager.baseList));
   }
 
   applyText(List<Sheet> searchList) {
