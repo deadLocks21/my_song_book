@@ -1,13 +1,13 @@
 import 'package:my_song_book/logic/Category.dart';
 import 'package:my_song_book/logic/Sheet.dart';
-import 'package:my_song_book/managers/DisplayedListManager.dart';
+import 'package:my_song_book/managers/DisplayedSheetsListManager.dart';
 
 class SearchASheetManager {
   SearchASheetManager._private();
   static final SearchASheetManager _instance = SearchASheetManager._private();
   static SearchASheetManager get instance => _instance;
 
-  final displayedListManager = DisplayedListManager.instance;
+  final displayedListManager = DisplayedSheetsListManager.instance;
 
   String _text = "";
   set text(String text) {

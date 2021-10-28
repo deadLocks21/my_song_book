@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:my_song_book/logic/Sheet.dart';
-import 'package:my_song_book/managers/DisplayedListManager.dart';
+import 'package:my_song_book/managers/DisplayedSheetsListManager.dart';
 
 class DisplayedSheetManager extends ChangeNotifier {
   DisplayedSheetManager._private() {
@@ -13,7 +13,7 @@ class DisplayedSheetManager extends ChangeNotifier {
       DisplayedSheetManager._private();
   static DisplayedSheetManager get instance => _instance;
 
-  final displayedListManager = DisplayedListManager.instance;
+  final displayedListManager = DisplayedSheetsListManager.instance;
   late Sheet sheet;
   late List<Sheet> _sheets;
 

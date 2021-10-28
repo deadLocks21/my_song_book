@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:my_song_book/database/FavoritesSheetsTable.dart';
-import 'package:my_song_book/managers/DisplayedListManager.dart';
+import 'package:my_song_book/managers/DisplayedSheetsListManager.dart';
 import 'package:my_song_book/managers/DisplayedSheetManager.dart';
 import 'package:my_song_book/widgets/ListDisplayer/SheetsList.dart';
 
@@ -14,7 +14,7 @@ class FavoritesPage extends StatefulWidget {
 class _FavoritesPageState extends State<FavoritesPage> {
   final favoritesSheetsTable = FavoritesSheetsTable.instance;
   final displayedSheetManager = DisplayedSheetManager.instance;
-  final displayedListManager = DisplayedListManager.instance;
+  final displayedListManager = DisplayedSheetsListManager.instance;
 
   @override
   void initState() {

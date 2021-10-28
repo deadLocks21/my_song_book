@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:my_song_book/components/Pages/Sheets/CategoriesSelector/CategoriesChoice.dart';
 import 'package:my_song_book/components/Pages/Sheets/SheetSearch.dart';
 import 'package:my_song_book/database/SheetsTable.dart';
-import 'package:my_song_book/managers/DisplayedListManager.dart';
+import 'package:my_song_book/managers/DisplayedSheetsListManager.dart';
 import 'package:my_song_book/widgets/ListDisplayer/SheetsList.dart';
 
 class SheetsPage extends StatefulWidget {
@@ -13,7 +13,7 @@ class SheetsPage extends StatefulWidget {
 }
 
 class _SheetsPageState extends State<SheetsPage> {
-  final displayedListManager = DisplayedListManager.instance;
+  final displayedListManager = DisplayedSheetsListManager.instance;
   final sheetsTable = SheetsTable.instance;
 
   @override
