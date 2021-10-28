@@ -13,6 +13,6 @@ class _HomePageState extends State<HomePage> {
   final displayedListsListManager = DisplayedListsListManager.instance;
   @override
   Widget build(BuildContext context) {
-    return ListDisplayer(height: 0.83, displayer: displayedListsListManager);
+    return ListDisplayer(height: MediaQuery.of(context).size.height * 0.9 - 49, displayer: displayedListsListManager);
   }
 }

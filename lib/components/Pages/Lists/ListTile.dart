@@ -2,6 +2,8 @@
 
 import 'package:flutter/material.dart';
 import 'package:my_song_book/logic/SheetsList.dart';
+import 'package:my_song_book/managers/DisplayedListManager.dart';
+import 'package:my_song_book/managers/ListsPageStatesManager.dart';
 
 class SheetsListTile extends StatefulWidget {
   SheetsList sheetsList;
@@ -12,11 +14,15 @@ class SheetsListTile extends StatefulWidget {
 }
 
 class _SheetsListTileState extends State<SheetsListTile> {
+  final listsPageStatesManager = ListsPageStatesManager.instance;
+  final displayedListManager = DisplayedListManager.instance;
+
   @override
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        print('List click');
+        displayedListManager.displayedList = widget.sheetsList;
+        listsPageStatesManager.setState('VIEW_LIST');
       },
       child: Container(
         decoration: const BoxDecoration(

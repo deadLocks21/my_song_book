@@ -25,7 +25,10 @@ class _FavoritesPageState extends State<FavoritesPage> {
   @override
   Widget build(BuildContext context) {
     return favoritesSheetsTable.favorites.length != 0
-        ? ListDisplayer(height: 0.83, displayer: displayedListManager,)
+        ? ListDisplayer(
+            height: MediaQuery.of(context).size.height * 0.9 - 49,
+            displayer: displayedListManager,
+          )
         : Padding(
             padding: const EdgeInsets.only(top: 24.0),
             child: Center(

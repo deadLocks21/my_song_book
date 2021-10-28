@@ -33,7 +33,7 @@ class _ListDisplayerState extends State<ListDisplayer> {
   Widget build(BuildContext context) {
     print(widget.displayer.list.length);
     return SizedBox(
-      height: MediaQuery.of(context).size.height * widget.height,
+      height: widget.height,
       child: GridView.count(
         primary: true,
         padding: const EdgeInsets.all(20),

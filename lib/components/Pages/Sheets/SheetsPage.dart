@@ -28,7 +28,7 @@ class _SheetsPageState extends State<SheetsPage> {
       children: [
         SheetSearch(),
         CategoriesChoice(),
-        ListDisplayer(height: 0.67, displayer: displayedListManager,)
+        ListDisplayer(height: MediaQuery.of(context).size.height * 0.9 - 164, displayer: displayedListManager,)
       ],
     );
   }
