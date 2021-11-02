@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:my_song_book/components/Initialization/InitializationPage.dart';
+import 'package:my_song_book/pages/Initialization/InitializationPage.dart';
 import 'package:my_song_book/utils/PlatformInfo.dart';
 import 'package:window_size/window_size.dart' as window_size;
 
