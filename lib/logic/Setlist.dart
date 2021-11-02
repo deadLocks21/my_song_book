@@ -1,21 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:my_song_book/logic/Sheet.dart';
 
-class SheetsList extends ChangeNotifier {
+class Setlist extends ChangeNotifier {
   int id;
   String name;
   DateTime date;
   List<Sheet> list;
   
-  SheetsList({
+  Setlist({
     required this.id,
     required this.name,
     required this.date,
     required this.list,
   });
 
-  factory SheetsList.fromMap(Map<String, dynamic> map) {
-    return SheetsList(
+  factory Setlist.fromMap(Map<String, dynamic> map) {
+    return Setlist(
       id: map['id'],
       name: map['name'],
       date: DateTime.parse(map['date']),
