@@ -11,6 +11,7 @@ class FavoritesPage extends StatefulWidget {
 
 class _FavoritesPageState extends State<FavoritesPage> {
   final displayableListsStorage = DisplayableListsStorage.instance;
+
   @override
   Widget build(BuildContext context) {
     return Column(
