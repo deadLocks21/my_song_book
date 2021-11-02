@@ -13,6 +13,8 @@ import 'package:my_song_book/logic/Tone.dart';
 import 'package:my_song_book/database/AuthorsTable.dart';
 import 'package:my_song_book/database/SheetsTable.dart';
 import 'package:my_song_book/database/TonesTable.dart';
+import 'package:my_song_book/pages/Sheets/ListOfSheets.dart';
+import 'package:my_song_book/widgets/ListDisplayer/DisplayableListsStorage.dart';
 import 'package:sqflite_common/sqlite_api.dart';
 
 class InitializationPage extends StatefulWidget {
@@ -29,6 +31,7 @@ class _InitializationPageState extends State<InitializationPage> {
   final tonesTable = TonesTable.instance;
   final database = SQLiteDbProvider.instance;
   final sheetsListsTable = SheetsListsTable.instance;
+  final displayableListsStorage = DisplayableListsStorage.instance;
   late CategoriesTable categoriesTable; // Needs the db to be initialized.
 
   Future<Database> asyncInitialization() async {
@@ -99,8 +102,7 @@ class _InitializationPageState extends State<InitializationPage> {
       }));
     }
 
-    initializationManager
-        .changeState("J'ajoute les chants à tes listes !!");
+    initializationManager.changeState("J'ajoute les chants à tes listes !!");
     List sheets_lists = await db.query('sheets_lists');
     for (var item in sheets_lists) {
       SheetsList sheetsList = sheetsListsTable.sheetslists
@@ -109,6 +111,9 @@ class _InitializationPageState extends State<InitializationPage> {
           .firstWhere((Sheet element) => element.id == item['id_sheet']);
       sheetsList.list.add(sheet);
     }
+
+    initializationManager.changeState("J'initialise les listes.");
+    displayableListsStorage.addList('SHEETS_PAGE', ListOfSheets());
 
     return db;
   }

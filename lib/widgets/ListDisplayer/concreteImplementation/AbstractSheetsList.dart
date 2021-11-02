@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:my_song_book/database/SheetsTable.dart';
 import 'package:my_song_book/logic/Sheet.dart';
 import 'package:my_song_book/widgets/ListDisplayer/IDisplayableList.dart';
+import 'package:my_song_book/widgets/SheetTile/SheetTile.dart';
 
 class AbstractSheetsList extends IDisplayableList {
-  final sheetsTable = SheetsTable.instance;
   List<Sheet> _baseList = [];
   List<Sheet> displayedList = [];
 
@@ -12,6 +12,9 @@ class AbstractSheetsList extends IDisplayableList {
     _baseList = list;
     displayedList = list;
   }
+
+  @override
+  get length => displayedList.length;
 
   @override
   sort() {
@@ -22,15 +25,14 @@ class AbstractSheetsList extends IDisplayableList {
   List<Widget> display() {
     List<Widget> list = [];
 
-    // displayedList.forEach((element) {
-    //   list.add(SheetTile(
-    //     element,
-    //     context: getContext(),
-    //   ));
-    // });
+    displayedList.forEach((element) {
+      list.add(makeSheetTile(element));
+    });
 
     return list;
   }
 
-  String getContext() => throw new Exception("Set the context name");
+  SheetTile makeSheetTile(Sheet sheet) {
+    return SheetTile(sheet: sheet);
+  }
 }
