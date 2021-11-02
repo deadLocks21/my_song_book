@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class IDisplayableList {
+class IDisplayableList extends ChangeNotifier {
   List get displayedList => throw new Exception(
       'Please, set the _displayedList variable of this IDisplayableList.');
 

@@ -13,6 +13,23 @@ class ListDisplayer extends StatefulWidget {
 }
 
 class _ListDisplayerState extends State<ListDisplayer> {
+
+  @override
+  void initState() {
+    super.initState();
+    widget.displayedList.addListener(refresh);
+  }
+
+  @override
+  dispose() {
+    super.dispose();
+    widget.displayedList.removeListener(refresh);
+  }
+
+  refresh() {
+    setState(() {});
+  }
+
   @override
   Widget build(BuildContext context) {
     return widget.displayedList.length != 0

@@ -7,6 +7,7 @@ class AbstractSheetsList extends IDisplayableList {
   List<Sheet> _baseList = [];
   List<Sheet> displayedList = [];
 
+  List<Sheet> get baseList => _baseList;
   set baseList(List<Sheet> list) {
     _baseList = list;
     displayedList = list;
