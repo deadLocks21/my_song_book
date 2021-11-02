@@ -1,16 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:my_song_book/pages/SetLists/pages/HomePage.dart';
+import 'package:my_song_book/pages/SetLists/pages/SetlistViewPage.dart';
 
-class ListsPageStatesManager extends ChangeNotifier {
-  ListsPageStatesManager._private() {
+class SetlistsPageStatesManager extends ChangeNotifier {
+  SetlistsPageStatesManager._private() {
     _states['HOME'] = HomePage();
-    // _states['VIEW_LIST'] = ListViewPage();
+    _states['VIEW_LIST'] = SetlistViewPage();
     // _states['EDIT_LIST'] = ListEditPage(add: false,);
     
   }
-  static final ListsPageStatesManager _instance =
-      ListsPageStatesManager._private();
-  static ListsPageStatesManager get instance => _instance;
+  static final SetlistsPageStatesManager _instance =
+      SetlistsPageStatesManager._private();
+  static SetlistsPageStatesManager get instance => _instance;
 
   String _state = 'HOME';
   Map<String, Widget> _states = {};

@@ -3,7 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:my_song_book/logic/Setlist.dart';
 import 'package:my_song_book/pages/SetLists/manager/DisplayedSetlistManager.dart';
-import 'package:my_song_book/pages/SetLists/manager/ListsPageStatesManager.dart';
+import 'package:my_song_book/pages/SetLists/manager/SetlistsPageStatesManager.dart';
 
 class SetlistTile extends StatefulWidget {
   Setlist setlist;
@@ -14,7 +14,7 @@ class SetlistTile extends StatefulWidget {
 }
 
 class _SetlistTileState extends State<SetlistTile> {
-  final listsPageStatesManager = ListsPageStatesManager.instance;
+  final listsPageStatesManager = SetlistsPageStatesManager.instance;
   final displayedListManager = DisplayedSetlistManager.instance;
   // final editDisplayedListManager = EditDislayedListManager.instance;
 

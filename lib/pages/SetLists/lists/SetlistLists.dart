@@ -1,8 +1,7 @@
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:my_song_book/database/SetlistsTable.dart';
 import 'package:my_song_book/logic/Setlist.dart';
-import 'package:my_song_book/pages/SetLists/widgets/SetlistTile.dart';
-import 'dart:ui';
+import 'package:my_song_book/pages/SetLists/pages/widgets/SetlistTile.dart';
 
 import 'package:my_song_book/widgets/ListDisplayer/IDisplayableList.dart';
 

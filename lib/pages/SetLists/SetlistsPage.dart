@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'manager/ListsPageStatesManager.dart';
+import 'manager/SetlistsPageStatesManager.dart';
 
 class SetlistsPage extends StatefulWidget {
   SetlistsPage({Key? key}) : super(key: key);
@@ -20,7 +20,7 @@ class _SetlistsPageState extends State<SetlistsPage> with TickerProviderStateMix
     curve: Curves.fastOutSlowIn,
   );
 
-  final listsPageStatesManager = ListsPageStatesManager.instance;
+  final listsPageStatesManager = SetlistsPageStatesManager.instance;
 
   @override
   void initState() {
