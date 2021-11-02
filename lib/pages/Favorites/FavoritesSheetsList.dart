@@ -35,7 +35,7 @@ class FavoritesSheetsList extends AbstractSheetsList {
 
   @override
   SheetTile makeSheetTile(Sheet sheet) {
-    return SheetTile(sheet: sheet); // TODO Custom sheet tile
+    return SheetTile(sheet: sheet, myList: 'FAVORITES_PAGE',); // TODO Custom sheet tile
   }
 
   @override

@@ -33,6 +33,6 @@ class AbstractSheetsList extends IDisplayableList {
   }
 
   SheetTile makeSheetTile(Sheet sheet) {
-    return SheetTile(sheet: sheet);
+    throw new Exception('Implement the makeSheetTile method.');
   }
 }
