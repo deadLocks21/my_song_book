@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:my_song_book/pages/Favorites/FavoritesSheetsList.dart';
 import 'package:my_song_book/pages/Initialization/InitializationManager.dart';
 import 'package:my_song_book/pages/Main/MainPage.dart';
 import 'package:my_song_book/pages/Initialization/DisplayState.dart';
@@ -114,6 +115,7 @@ class _InitializationPageState extends State<InitializationPage> {
 
     initializationManager.changeState("J'initialise les listes.");
     displayableListsStorage.addList('SHEETS_PAGE', ListOfSheets());
+    displayableListsStorage.addList('FAVORITES_PAGE', FavoritesSheetsList());
 
     return db;
   }

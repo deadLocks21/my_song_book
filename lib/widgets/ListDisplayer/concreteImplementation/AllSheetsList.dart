@@ -6,6 +6,5 @@ class AllSheetsList extends AbstractSheetsList {
 
   AllSheetsList() {
     super.baseList = sheetsTable.sheets;
-    super.sort();
   }
 }
