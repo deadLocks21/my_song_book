@@ -7,6 +7,6 @@ class ListOfSheets extends AllSheetsList {
 
   @override
   SheetTile makeSheetTile(Sheet sheet) {
-    return SheetTile(sheet: sheet, myList: 'SHEETS_PAGE');  // TODO Custom sheet tile
+    return SheetTile(sheet: sheet, myList: 'SHEETS_PAGE');
   }
 }

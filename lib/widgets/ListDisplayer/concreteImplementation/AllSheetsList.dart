@@ -13,7 +13,6 @@ class AllSheetsList extends AbstractSheetsList
     super.baseList = sheetsTable.sheets;
   }
 
-  @override
   String _text = "";
   String get text => _text;
   set text(String text) {

@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-import 'package:my_song_book/pages/DisplaySheets/DisplaySheetsManager.dart';
-
 class TheCloseButton extends StatefulWidget {
   TheCloseButton({
     Key? key,
