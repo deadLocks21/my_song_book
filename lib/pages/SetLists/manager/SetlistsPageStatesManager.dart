@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:my_song_book/pages/SetLists/pages/HomePage.dart';
+import 'package:my_song_book/pages/SetLists/pages/SetlistEditPage.dart';
 import 'package:my_song_book/pages/SetLists/pages/SetlistViewPage.dart';
 
 class SetlistsPageStatesManager extends ChangeNotifier {
   SetlistsPageStatesManager._private() {
     _states['HOME'] = HomePage();
     _states['VIEW_LIST'] = SetlistViewPage();
-    // _states['EDIT_LIST'] = ListEditPage(add: false,);
+    _states['EDIT_LIST'] = SetlistEditPage(add: false,);
     
   }
   static final SetlistsPageStatesManager _instance =

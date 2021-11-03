@@ -1,20 +1,23 @@
+// ignore_for_file: must_be_immutable
+
 import 'package:flutter/material.dart';
+import 'package:my_song_book/pages/SetLists/lists/EditSelectedSetlistList.dart';
 import 'package:my_song_book/pages/SetLists/manager/DisplayedSetlistManager.dart';
-import 'package:my_song_book/pages/SetLists/pages/widgets/GoEditButton.dart';
-import 'package:my_song_book/pages/SetLists/pages/widgets/GoHomeButton.dart';
-import 'package:my_song_book/widgets/ListDisplayer/DisplayableListsStorage.dart';
+import 'package:my_song_book/pages/SetLists/pages/widgets/SaveButton.dart';
 import 'package:my_song_book/widgets/ListDisplayer/ListDisplayer.dart';
 
-class SetlistViewPage extends StatefulWidget {
-  SetlistViewPage({Key? key}) : super(key: key);
+import 'widgets/CloseEditMode.dart';
+
+class SetlistEditPage extends StatefulWidget {
+  bool add;
+  SetlistEditPage({Key? key, required this.add}) : super(key: key);
 
   @override
-  _SetlistViewPageState createState() => _SetlistViewPageState();
+  _SetlistEditPageState createState() => _SetlistEditPageState();
 }
 
-class _SetlistViewPageState extends State<SetlistViewPage> {
+class _SetlistEditPageState extends State<SetlistEditPage> {
   final displayedSetlistManager = DisplayedSetlistManager.instance;
-  final displayableListsStorage = DisplayableListsStorage.instance;
 
   @override
   void initState() {
@@ -38,15 +41,18 @@ class _SetlistViewPageState extends State<SetlistViewPage> {
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Text(
-              "Liste " + displayedSetlistManager.displayedList.name,
-              style: TextStyle(fontSize: 18),
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 9.0),
+              child: Container(
+                width: MediaQuery.of(context).size.width * 0.6,
+                child: Text('Edit name and date'),
+              ),
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
-                GoEditButton(),
-                GoHomeButton(),
+                SaveButton(),
+                CloseEditMode(),
               ],
             ),
           ],
@@ -54,8 +60,10 @@ class _SetlistViewPageState extends State<SetlistViewPage> {
         Padding(
           padding: const EdgeInsets.only(top: 12.0),
           child: ListDisplayer(
-            height: MediaQuery.of(context).size.height * 0.9 - 109,
-            displayedList: displayableListsStorage.list('SELECTED_SETLIST'),
+            height: MediaQuery.of(context).size.height * 0.9 - 153,
+            displayedList: new EditSelectedSetlistList(
+              displayedSetlistManager.displayedList.list,
+            ),
           ),
         )
       ],
