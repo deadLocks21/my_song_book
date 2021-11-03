@@ -6,6 +6,7 @@ import 'package:my_song_book/pages/SetLists/manager/DisplayedSetlistManager.dart
 import 'package:my_song_book/pages/SetLists/pages/widgets/SaveButton.dart';
 import 'package:my_song_book/widgets/ListDisplayer/ListDisplayer.dart';
 
+import 'widgets/AddSheetButton.dart';
 import 'widgets/CloseEditMode.dart';
 
 class SetlistEditPage extends StatefulWidget {
@@ -51,6 +52,7 @@ class _SetlistEditPageState extends State<SetlistEditPage> {
             Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
+                AddSheetButton(),
                 SaveButton(),
                 CloseEditMode(),
               ],

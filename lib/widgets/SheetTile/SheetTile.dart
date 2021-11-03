@@ -3,6 +3,8 @@
 import 'package:flutter/material.dart';
 import 'package:my_song_book/logic/Sheet.dart';
 import 'package:my_song_book/pages/DisplaySheets/DisplaySheetsPage.dart';
+import 'package:my_song_book/pages/SetLists/manager/DisplayedSetlistManager.dart';
+import 'package:my_song_book/pages/SetLists/manager/SetlistsPageStatesManager.dart';
 import 'package:my_song_book/pages/SetLists/pages/widgets/DeleteButton.dart';
 import 'package:my_song_book/widgets/SheetTile/widgets/FavoriteButton.dart';
 
@@ -19,7 +21,7 @@ class SheetTile extends StatefulWidget {
   SheetTile({
     Key? key,
     required this.sheet,
-    required this.myList,
+    this.myList = '',
     this.setFavorite = true,
     this.displayCategories = true,
     this.display = true,
@@ -31,6 +33,9 @@ class SheetTile extends StatefulWidget {
 }
 
 class _SheetTileState extends State<SheetTile> {
+  final setlistsPageStatesManager = SetlistsPageStatesManager.instance;
+  final displayedSetlistManager = DisplayedSetlistManager.instance;
+  
   @override
   Widget build(BuildContext context) {
     return InkWell(
@@ -44,6 +49,12 @@ class _SheetTileState extends State<SheetTile> {
                       sheet: widget.sheet,
                     )),
           );
+        } else {
+          displayedSetlistManager.add(widget.sheet);
+          if(setlistsPageStatesManager.state.contains('EDIT')) {
+            setlistsPageStatesManager.setState('EDIT_LIST');
+          }
+
         }
       },
       child: Container(

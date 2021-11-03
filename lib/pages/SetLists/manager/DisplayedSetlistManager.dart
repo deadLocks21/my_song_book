@@ -40,7 +40,6 @@ class DisplayedSetlistManager extends ChangeNotifier {
         .baseList = displayedList.list;
 
     this.saveInDB();
-    // TODO
 
     notifyListeners();
   }
@@ -51,6 +50,12 @@ class DisplayedSetlistManager extends ChangeNotifier {
     for (Sheet sheet in baseList.list) {
       db.execute('INSERT INTO sheets_lists(id_sheet, id_list) VALUES (${sheet.id}, ${baseList.id});');
     }
+  }
+
+  add(Sheet sheet) {
+    if(!_displayedList.list.contains(sheet))
+    _displayedList.list.add(sheet);
+    notifyListeners();
   }
 
   remove(Sheet sheet) {

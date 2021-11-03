@@ -1,24 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:my_song_book/pages/SetLists/manager/SetlistsPageStatesManager.dart';
 
-class CloseEditMode extends StatefulWidget {
-  CloseEditMode({Key? key}) : super(key: key);
+class AddSheetButton extends StatefulWidget {
+  AddSheetButton({Key? key}) : super(key: key);
 
   @override
-  _CloseEditModeState createState() => _CloseEditModeState();
+  _AddSheetButtonState createState() => _AddSheetButtonState();
 }
 
-class _CloseEditModeState extends State<CloseEditMode> {
+class _AddSheetButtonState extends State<AddSheetButton> {
   final setlistsPageStatesManager = SetlistsPageStatesManager.instance;
 
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
       onPressed: () {
-        setlistsPageStatesManager.setState('VIEW_LIST');
+        setlistsPageStatesManager.setState('ADD_SHEET_EDIT');
       },
       child: Icon(
-        Icons.close_rounded,
+        Icons.add_rounded,
         size: 32,
       ),
       style: ElevatedButton.styleFrom(

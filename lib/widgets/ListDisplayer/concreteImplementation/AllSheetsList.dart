@@ -38,6 +38,10 @@ class AllSheetsList extends AbstractSheetsList
     notifyListeners();
   }
 
+  resetCategories() {
+    _categories = [];
+  }
+
   @override
   bool inCategories(Category category) => this._categories.contains(category);
 

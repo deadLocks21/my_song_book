@@ -14,6 +14,7 @@ import 'package:my_song_book/logic/Tone.dart';
 import 'package:my_song_book/database/AuthorsTable.dart';
 import 'package:my_song_book/database/SheetsTable.dart';
 import 'package:my_song_book/database/TonesTable.dart';
+import 'package:my_song_book/pages/SetLists/lists/AddSheetList.dart';
 import 'package:my_song_book/pages/SetLists/lists/SelectedSetlistList.dart';
 import 'package:my_song_book/pages/SetLists/lists/SetlistLists.dart';
 import 'package:my_song_book/pages/Sheets/ListOfSheets.dart';
@@ -120,6 +121,7 @@ class _InitializationPageState extends State<InitializationPage> {
     displayableListsStorage.addList('FAVORITES_PAGE', FavoritesSheetsList());
     displayableListsStorage.addList('SETLIST_PAGE', SetlistsLists());
     displayableListsStorage.addList('SELECTED_SETLIST', SelectedSetlistList());
+    displayableListsStorage.addList('ADD_SHEET_IN_EDIT_LIST_PAGE', AddSheetList());
 
     return db;
   }
