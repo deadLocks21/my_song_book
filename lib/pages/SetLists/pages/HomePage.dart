@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:my_song_book/widgets/ListDisplayer/DisplayableListsStorage.dart';
 import 'package:my_song_book/widgets/ListDisplayer/ListDisplayer.dart';
 
+import 'widgets/AddSetlistButton.dart';
+
 class HomePage extends StatefulWidget {
   HomePage({Key? key}) : super(key: key);
 
@@ -14,9 +16,28 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    return ListDisplayer(
-      height: MediaQuery.of(context).size.height * 0.9 - 49,
-      displayedList: displayableListsStorage.list('SETLIST_PAGE'),
+    return Column(
+      children: [
+        Row(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.end,
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                AddSetlistButton()
+              ],
+            ),
+          ],
+        ),
+        Padding(
+          padding: const EdgeInsets.only(top: 12.0),
+          child: ListDisplayer(
+            height: MediaQuery.of(context).size.height * 0.9 - 153,
+            displayedList: displayableListsStorage.list('SETLIST_PAGE'),
+          ),
+        )
+      ],
     );
   }
 }
