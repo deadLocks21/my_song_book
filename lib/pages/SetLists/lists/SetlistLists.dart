@@ -34,4 +34,9 @@ class SetlistsLists extends IDisplayableList {
   sort() {
     throw UnimplementedError();
   }
+  
+  remove(Setlist setlist) {
+    _displayedList.remove(_displayedList.firstWhere((element) => element.id == setlist.id));
+    notifyListeners();
+  }
 }

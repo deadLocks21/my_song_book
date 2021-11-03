@@ -14,6 +14,20 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   final displayableListsStorage = DisplayableListsStorage.instance;
 
+    @override
+  void initState() {
+    super.initState();
+    displayableListsStorage.list('SETLIST_PAGE').addListener(refresh);
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    displayableListsStorage.list('SETLIST_PAGE').removeListener(refresh);
+  }
+
+  refresh() => setState(() {});
+  
   @override
   Widget build(BuildContext context) {
     return Column(

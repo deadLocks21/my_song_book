@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:my_song_book/pages/SetLists/lists/EditSelectedSetlistList.dart';
 import 'package:my_song_book/pages/SetLists/manager/DisplayedSetlistManager.dart';
+import 'package:my_song_book/pages/SetLists/pages/widgets/DeleteTheListButton.dart';
 import 'package:my_song_book/pages/SetLists/pages/widgets/SaveButton.dart';
 import 'package:my_song_book/widgets/ListDisplayer/ListDisplayer.dart';
 
@@ -53,6 +54,7 @@ class _SetlistEditPageState extends State<SetlistEditPage> {
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 AddSheetButton(),
+                DeleteTheListButton(),
                 SaveButton(),
                 CloseEditMode(),
               ],
