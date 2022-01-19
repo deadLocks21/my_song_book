@@ -34,7 +34,7 @@ class FavoritesSheetsList extends AbstractSheetsList {
   }
 
   @override
-  SheetTile makeSheetTile(Sheet sheet) {
+  SheetTile makeSheetTile(Sheet sheet, {Key ?key}) {
     return SheetTile(sheet: sheet, myList: 'FAVORITES_PAGE',);
   }
 

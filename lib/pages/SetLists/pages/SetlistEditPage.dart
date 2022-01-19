@@ -68,6 +68,7 @@ class _SetlistEditPageState extends State<SetlistEditPage> {
             displayedList: new EditSelectedSetlistList(
               displayedSetlistManager.displayedList.list,
             ),
+            reorderable: true,
           ),
         )
       ],
