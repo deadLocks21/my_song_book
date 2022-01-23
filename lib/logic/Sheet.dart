@@ -14,6 +14,7 @@ class Sheet extends ChangeNotifier {
   int id;
   String code;
   String name;
+  String notes;
   late int _author;
   late int _tone;
   late int _favorite;
@@ -57,6 +58,7 @@ class Sheet extends ChangeNotifier {
       {this.id = 0,
       this.code = "",
       this.name = "",
+      this.notes = "",
       author = 0,
       tone = 0,
       favorite = 0,
@@ -72,6 +74,7 @@ class Sheet extends ChangeNotifier {
       id: map['id'],
       code: map['code'],
       name: map['name'],
+      notes: map['notes'] ?? "",
       author: map['_author'],
       tone: map['_tone'],
       favorite: map['favorite'],
@@ -81,6 +84,6 @@ class Sheet extends ChangeNotifier {
 
   @override
   String toString() {
-    return 'Sheet(id: $id, code: $code, name: $name, _author: $_author, _tone: $_tone, favorite: $favorite, sheets: $sheets, categories: $categories)';
+    return 'Sheet(id: $id, code: $code, name: $name, notes: $notes, _author: $_author, _tone: $_tone, favorite: $favorite, sheets: $sheets, categories: $categories)';
   }
 }

@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:my_song_book/logic/Sheet.dart';
+import 'package:my_song_book/widgets/PostIt/PostItWidget.dart';
 
 import 'DisplaySheetsManager.dart';
 import 'widgets/Buttons/ActionsButtons.dart';
@@ -51,6 +52,7 @@ class _DisplaySheetsPageState extends State<DisplaySheetsPage> {
             GoBackButton(manager: displaySheetsManager),
             GoForwardButton(manager: displaySheetsManager),
             ActionsButtons(manager: displaySheetsManager),
+            PostItWidget(top: 100, left: 100),
           ],
         ),
       ),

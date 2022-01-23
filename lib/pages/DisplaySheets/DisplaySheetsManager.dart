@@ -1,19 +1,32 @@
 import 'package:flutter/material.dart';
+import 'package:my_song_book/database/DbProvider.dart';
 import 'package:my_song_book/logic/Sheet.dart';
 import 'package:my_song_book/widgets/ListDisplayer/DisplayableListsStorage.dart';
+import 'package:my_song_book/widgets/PostIt/PostItTextManager.dart';
+import 'package:sqflite_common/sqlite_api.dart';
 
 class DisplaySheetsManager extends ChangeNotifier {
-  DisplaySheetsManager(Sheet sheet, String context) {
-    this.sheet = sheet;
-    this._sheets = displayableListsStorage.list(context).displayedList;
-  }
-
   final displayableListsStorage = DisplayableListsStorage.instance;
+  final postItTextManager = PostItTextManager.instance;
+  final Database db = SQLiteDbProvider.instance.database;
   late Sheet sheet;
   late List _sheets;
 
+  DisplaySheetsManager(Sheet sheet, String context) {
+    this.sheet = sheet;
+    this._sheets = displayableListsStorage.list(context).displayedList;
+    postItTextManager.addListener(saveSheetText);
+  }
+
+  saveSheetText() {
+    this.sheet.notes = postItTextManager.text;
+    db.update('sheets', {'notes': this.sheet.notes}, where: 'id = ?', whereArgs: [this.sheet.id]);
+  }
+
   setSheet(Sheet sheet) {
     this.sheet = sheet;
+    postItTextManager.refresh = true;
+    postItTextManager.text = sheet.notes;
     notifyListeners();
   }
 
@@ -33,14 +46,14 @@ class DisplaySheetsManager extends ChangeNotifier {
 
   back() {
     if (hasBack()) {
-      sheet = _sheets.elementAt(_sheets.indexOf(sheet) - 1);
+      setSheet(_sheets.elementAt(_sheets.indexOf(sheet) - 1));
       notifyListeners();
     }
   }
 
   forward() {
     if (hasForward()) {
-      sheet = _sheets.elementAt(_sheets.indexOf(sheet) + 1);
+      setSheet(_sheets.elementAt(_sheets.indexOf(sheet) + 1));
       notifyListeners();
     }
   }

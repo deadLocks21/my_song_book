@@ -76,6 +76,7 @@ class _InitializationPageState extends State<InitializationPage> {
         'id': sheet['id'],
         'code': sheet['code'],
         'name': sheet['name'],
+        'notes': sheet['notes'],
         '_author': sheet['author'],
         '_tone': sheet['tone'],
         'favorite': int.parse(sheet['favorite']),
