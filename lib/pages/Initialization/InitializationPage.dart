@@ -108,7 +108,7 @@ class _InitializationPageState extends State<InitializationPage> {
     }
 
     initializationManager.changeState("J'ajoute les chants à tes listes !!");
-    List sheets_lists = await db.query('sheets_lists');
+    List sheets_lists = await db.query('sheets_lists', orderBy: 'sheets_order');
     for (var item in sheets_lists) {
       Setlist sheetsList = setlistsTable.setlists
           .firstWhere((Setlist element) => element.id == item['id_list']);

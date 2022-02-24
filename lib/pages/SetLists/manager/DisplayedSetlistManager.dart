@@ -45,10 +45,12 @@ class DisplayedSetlistManager extends ChangeNotifier {
   }
 
   saveInDB() async {
+    int order = 1;
     await db
         .delete('sheets_lists', where: 'id_list = ?', whereArgs: [baseList.id]);
     for (Sheet sheet in baseList.list) {
-      db.execute('INSERT INTO sheets_lists(id_sheet, id_list) VALUES (${sheet.id}, ${baseList.id});');
+      db.execute('INSERT INTO sheets_lists(id_sheet, id_list, sheets_order) VALUES (${sheet.id}, ${baseList.id}, ${order});');
+      order ++;
     }
   }
 
