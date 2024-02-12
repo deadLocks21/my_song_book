@@ -1,3 +1,4 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:my_song_book/pages/Initialization/InitializationPage.dart';
 import 'package:my_song_book/utils/PlatformInfo.dart';
@@ -30,7 +31,18 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
+      scrollBehavior: MouseAndTouchScrollBehavior(),
       home: InitializationPage(),
     );
   }
+}
+
+class MouseAndTouchScrollBehavior extends MaterialScrollBehavior {
+  const MouseAndTouchScrollBehavior();
+
+  @override
+  Set<PointerDeviceKind> get dragDevices => { 
+    PointerDeviceKind.mouse, 
+    PointerDeviceKind.touch
+  };
 }
