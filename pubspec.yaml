@@ -41,7 +41,7 @@ dependencies:
   path_provider: ^2.0.5
   sqflite_common_ffi: ^2.0.0+3
   sqlite3_flutter_libs: ^0.5.1
-  flutter_colorpicker: ^0.6.0
+  flutter_colorpicker: ^1.0.3
   reorderable_grid: ^1.0.3
 
 dev_dependencies:

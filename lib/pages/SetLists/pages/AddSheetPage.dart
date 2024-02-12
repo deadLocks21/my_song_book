@@ -6,7 +6,7 @@ import 'package:my_song_book/widgets/CategoriesChoice/CategoriesChoice.dart';
 import 'package:my_song_book/widgets/ListDisplayer/DisplayableListsStorage.dart';
 import 'package:my_song_book/widgets/ListDisplayer/ListDisplayer.dart';
 import 'package:my_song_book/widgets/ListDisplayer/concreteImplementation/AllSheetsList.dart';
-import 'package:my_song_book/widgets/SearchBar/SearchBar.dart';
+import 'package:my_song_book/widgets/SearchBar/SearchBar.dart' as MSB;
 
 import 'widgets/CloseAddSheetButton.dart';
 
@@ -38,7 +38,7 @@ class _AddSheetPageState extends State<AddSheetPage> {
           children: [
             SizedBox(
               width: MediaQuery.of(context).size.width * 0.6,
-              child: SearchBar(
+              child: MSB.SearchBar(
                 analyzer: (displayableListsStorage
                     .list('ADD_SHEET_IN_EDIT_LIST_PAGE') as AllSheetsList),
               ),

@@ -3,7 +3,7 @@ import 'package:my_song_book/widgets/CategoriesChoice/CategoriesChoice.dart';
 import 'package:my_song_book/widgets/ListDisplayer/DisplayableListsStorage.dart';
 import 'package:my_song_book/widgets/ListDisplayer/ListDisplayer.dart';
 import 'package:my_song_book/widgets/ListDisplayer/concreteImplementation/AllSheetsList.dart';
-import 'package:my_song_book/widgets/SearchBar/SearchBar.dart';
+import 'package:my_song_book/widgets/SearchBar/SearchBar.dart' as MSB;
 
 class SheetsPage extends StatefulWidget {
   SheetsPage({Key? key}) : super(key: key);
@@ -18,7 +18,7 @@ class _SheetsPageState extends State<SheetsPage> {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        SearchBar(analyzer: (displayableListsStorage.list('SHEETS_PAGE') as AllSheetsList),),
+        MSB.SearchBar(analyzer: (displayableListsStorage.list('SHEETS_PAGE') as AllSheetsList),),
         CategoriesChoice(analyzer: (displayableListsStorage.list('SHEETS_PAGE') as AllSheetsList),),
         ListDisplayer(
           height: MediaQuery.of(context).size.height * 0.9 - 164,
