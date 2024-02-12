@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 
 import 'package:my_song_book/pages/DisplaySheets/DisplaySheetsManager.dart';
 import 'package:my_song_book/pages/DisplaySheets/widgets/Buttons/FavoriteButton.dart';
+import 'package:my_song_book/pages/DisplaySheets/widgets/Buttons/HistoryButton.dart';
 import 'package:my_song_book/widgets/PostIt/OpenedPostItManager.dart';
 import 'package:my_song_book/widgets/PostIt/PostItHistoryManager.dart';
 
@@ -21,7 +22,7 @@ class _ActionsButtonsState extends State<ActionsButtons> {
   final postItHistoryManager = PostItHistoryManager.instance;
   OpenedPostItManager openedPostItManager = OpenedPostItManager.instance;
 
-    @override
+  @override
   void initState() {
     super.initState();
     openedPostItManager.addListener(refresh);
@@ -46,13 +47,24 @@ class _ActionsButtonsState extends State<ActionsButtons> {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
+            if (widget.manager.sheet.notesHistory.length > 0)
+              Padding(
+                padding: const EdgeInsets.only(right: 24.0),
+                child: HistoryButton(manager: widget.manager),
+              ),
             Padding(
               padding: const EdgeInsets.only(right: 24.0),
               child: IconButton(
-                icon: Icon(openedPostItManager.opened ? Icons.file_present : Icons.file_present_outlined, color: Colors.red,),
+                icon: Icon(
+                  openedPostItManager.opened
+                      ? Icons.file_present
+                      : Icons.file_present_outlined,
+                  color: Colors.red,
+                ),
                 onPressed: () {
                   openedPostItManager.opened = !openedPostItManager.opened;
-                  postItHistoryManager.addNotesInHistory(widget.manager.sheet.id, widget.manager.sheet.notes);
+                  postItHistoryManager.addNotesInHistory(
+                      widget.manager.sheet.id, widget.manager.sheet.notes);
                 },
               ),
             ),

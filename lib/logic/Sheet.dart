@@ -60,6 +60,11 @@ class Sheet extends ChangeNotifier {
     notifyListeners();
   }
 
+  removeNotesFromHistory(String notes) {
+    notesHistory.remove(notes);
+    notifyListeners();
+  }
+
   Sheet(
       {this.id = 0,
       this.code = "",

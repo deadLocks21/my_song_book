@@ -25,6 +25,17 @@ class PostItHistoryManager extends ChangeNotifier {
       Sheet sheet = sheetsTable.sheets
           .firstWhere((Sheet element) => element.id == sheetId);
       sheet.addNotesInHistory(notes);
+      sheet.notifyListeners();
     });
+  }
+
+  removeNotesFromHistory(int sheetId, String notes) {
+    db.delete('notes_history',
+        where: 'sheet_id = ? AND notes = ?', whereArgs: [sheetId, notes]);
+
+    Sheet sheet = sheetsTable.sheets
+        .firstWhere((Sheet element) => element.id == sheetId);
+    sheet.removeNotesFromHistory(notes);
+    sheet.notifyListeners();
   }
 }
