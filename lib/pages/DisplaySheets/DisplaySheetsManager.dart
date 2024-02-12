@@ -13,7 +13,7 @@ class DisplaySheetsManager extends ChangeNotifier {
   late List _sheets;
 
   DisplaySheetsManager(Sheet sheet, String context) {
-    this.sheet = sheet;
+    this.setSheet(sheet);
     this._sheets = displayableListsStorage.list(context).displayedList;
     postItTextManager.addListener(saveSheetText);
   }
