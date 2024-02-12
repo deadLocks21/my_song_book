@@ -68,45 +68,45 @@ class _DisplayACategoryState extends State<DisplayACategory> {
 
   Widget EditColorButton() => InkWell(
         onTap: () {
-          showDialog(
-              context: context,
-              builder: (BuildContext context) {
-                return AlertDialog(
-                  title: const Text('Choix de la couleur'),
-                  content: SingleChildScrollView(
-                    child: SlidePicker(
-                      pickerColor: widget.category.color,
-                      onColorChanged: (Color color) {
-                        setState(() {
-                          widget.category.color = color;
-                        });
-                      },
-                      paletteType: PaletteType.rgb,
-                      enableAlpha: false,
-                      displayThumbColor: true,
-                      showLabel: false,
-                      showIndicator: true,
-                      indicatorBorderRadius: const BorderRadius.vertical(
-                        top: Radius.circular(25.0),
-                      ),
-                    ),
-                  ),
-                  actions: <Widget>[
-                    Padding(
-                      padding: const EdgeInsets.only(bottom: 16.0, right: 16.0),
-                      child: TextButton(
-                        child: const Text('SAUVEGARDER',
-                            style: TextStyle(
-                                color: Colors.black,
-                                fontWeight: FontWeight.bold)),
-                        onPressed: () {
-                          Navigator.of(context).pop();
-                        },
-                      ),
-                    ),
-                  ],
-                );
-              });
+          // showDialog(
+          //     context: context,
+          //     builder: (BuildContext context) {
+          //       return AlertDialog(
+          //         title: const Text('Choix de la couleur'),
+          //         content: SingleChildScrollView(
+          //           child: SlidePicker(
+          //             pickerColor: widget.category.color,
+          //             onColorChanged: (Color color) {
+          //               setState(() {
+          //                 widget.category.color = color;
+          //               });
+          //             },
+          //             paletteType: PaletteType.rgb,
+          //             enableAlpha: false,
+          //             displayThumbColor: true,
+          //             showLabel: false,
+          //             showIndicator: true,
+          //             indicatorBorderRadius: const BorderRadius.vertical(
+          //               top: Radius.circular(25.0),
+          //             ),
+          //           ),
+          //         ),
+          //         actions: <Widget>[
+          //           Padding(
+          //             padding: const EdgeInsets.only(bottom: 16.0, right: 16.0),
+          //             child: TextButton(
+          //               child: const Text('SAUVEGARDER',
+          //                   style: TextStyle(
+          //                       color: Colors.black,
+          //                       fontWeight: FontWeight.bold)),
+          //               onPressed: () {
+          //                 Navigator.of(context).pop();
+          //               },
+          //             ),
+          //           ),
+          //         ],
+          //       );
+          //     });
         },
         child: CategoryColor(),
       );
