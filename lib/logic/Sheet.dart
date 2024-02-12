@@ -18,6 +18,7 @@ class Sheet extends ChangeNotifier {
   late int _author;
   late int _tone;
   late int _favorite;
+  List<String> notesHistory = [];
   List<Category> categories = [];
 
   late List sheets;
@@ -54,6 +55,11 @@ class Sheet extends ChangeNotifier {
     notifyListeners();
   }
 
+  addNotesInHistory(String notes) {
+    notesHistory.add(notes);
+    notifyListeners();
+  }
+
   Sheet(
       {this.id = 0,
       this.code = "",
@@ -84,6 +90,6 @@ class Sheet extends ChangeNotifier {
 
   @override
   String toString() {
-    return 'Sheet(id: $id, code: $code, name: $name, notes: $notes, _author: $_author, _tone: $_tone, favorite: $favorite, sheets: $sheets, categories: $categories)';
+    return 'Sheet(id: $id, code: $code, name: $name, notes: $notes, _author: $_author, _tone: $_tone, favorite: $favorite, sheets: $sheets, categories: $categories, notesHistory: $notesHistory)';
   }
 }

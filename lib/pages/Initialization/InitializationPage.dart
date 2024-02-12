@@ -117,6 +117,14 @@ class _InitializationPageState extends State<InitializationPage> {
       sheetsList.list.add(sheet);
     }
 
+    initializationManager.changeState("Récupération des notes");
+    List notes_history = await db.query('notes_history');
+    for (var item in notes_history) {
+      Sheet sheet = sheetsTable.sheets
+          .firstWhere((Sheet element) => element.id == item['sheet_id']);
+      sheet.addNotesInHistory(item['notes']);
+    }
+
     initializationManager.changeState("J'initialise les listes.");
     displayableListsStorage.addList('SHEETS_PAGE', ListOfSheets());
     displayableListsStorage.addList('FAVORITES_PAGE', FavoritesSheetsList());

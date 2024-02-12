@@ -33,3 +33,12 @@
 --     FOREIGN KEY (id_category)
 --         REFERENCES categories (id)
 -- );
+
+-- CREATE TABLE
+--   `notes_history` (
+--     `id` integer not null primary key autoincrement,
+--     `sheet_id` INTEGER not null,
+--     `notes` TEXT null,
+--     `created_at` datetime not null default CURRENT_TIMESTAMP,
+--     FOREIGN KEY (sheet_id) REFERENCES sheets (id)
+--   )
