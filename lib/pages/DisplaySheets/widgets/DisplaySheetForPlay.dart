@@ -20,17 +20,21 @@ class _DisplaySheetForPlayState extends State<DisplaySheetForPlay> {
       width: MediaQuery.of(context).size.width,
       height: MediaQuery.of(context).size.height,
       color: Colors.black,
-      child: SingleChildScrollView(
-          child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          for (int i = 0; i < widget.sheet.sheets.length; i++)
-            Image.file(
-              new File(widget.sheet.sheets[i]),
-              height: MediaQuery.of(context).size.height,
-            ),
-        ],
-      )),
+      child: Center(
+        child: ListView(
+          shrinkWrap: true,
+          scrollDirection: Axis.horizontal,
+          children: [
+            for (int i = 0; i < widget.sheet.sheets.length; i++)
+              Center(
+                child: Image.file(
+                  new File(widget.sheet.sheets[i]),
+                  height: MediaQuery.of(context).size.height,
+                ),
+              ),
+          ],
+        ),
+      ),
     );
   }
 }
