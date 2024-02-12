@@ -1,8 +1,14 @@
+// ignore_for_file: must_be_immutable
+
 import 'package:flutter/material.dart';
+import 'package:my_song_book/pages/DisplaySheets/DisplaySheetsManager.dart';
+import 'package:my_song_book/widgets/PostIt/PostItHistoryManager.dart';
 
 class TheCloseButton extends StatefulWidget {
+  DisplaySheetsManager manager;
   TheCloseButton({
     Key? key,
+    required this.manager,
   }) : super(key: key);
 
   @override
@@ -10,6 +16,8 @@ class TheCloseButton extends StatefulWidget {
 }
 
 class _TheCloseButtonState extends State<TheCloseButton> {
+  final postItHistoryManager = PostItHistoryManager.instance;
+  
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -22,6 +30,7 @@ class _TheCloseButtonState extends State<TheCloseButton> {
       child: IconButton(
         onPressed: () {
           Navigator.pop(context);
+          postItHistoryManager.addNotesInHistory(widget.manager.sheet.id, widget.manager.sheet.notes);
         },
         color: Colors.white,
         icon: Icon(

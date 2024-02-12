@@ -2,11 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:my_song_book/database/DbProvider.dart';
 import 'package:my_song_book/logic/Sheet.dart';
 import 'package:my_song_book/widgets/ListDisplayer/DisplayableListsStorage.dart';
+import 'package:my_song_book/widgets/PostIt/PostItHistoryManager.dart';
 import 'package:my_song_book/widgets/PostIt/PostItTextManager.dart';
 import 'package:sqflite_common/sqlite_api.dart';
 
 class DisplaySheetsManager extends ChangeNotifier {
   final displayableListsStorage = DisplayableListsStorage.instance;
+  final postItHistoryManager = PostItHistoryManager.instance;
   final postItTextManager = PostItTextManager.instance;
   final Database db = SQLiteDbProvider.instance.database;
   late Sheet sheet;
@@ -46,6 +48,8 @@ class DisplaySheetsManager extends ChangeNotifier {
 
   back() {
     if (hasBack()) {
+      Sheet current = _sheets.elementAt(_sheets.indexOf(sheet));
+      postItHistoryManager.addNotesInHistory(current.id, current.notes);
       setSheet(_sheets.elementAt(_sheets.indexOf(sheet) - 1));
       notifyListeners();
     }
@@ -53,6 +57,8 @@ class DisplaySheetsManager extends ChangeNotifier {
 
   forward() {
     if (hasForward()) {
+      Sheet current = _sheets.elementAt(_sheets.indexOf(sheet));
+      postItHistoryManager.addNotesInHistory(current.id, current.notes);
       setSheet(_sheets.elementAt(_sheets.indexOf(sheet) + 1));
       notifyListeners();
     }

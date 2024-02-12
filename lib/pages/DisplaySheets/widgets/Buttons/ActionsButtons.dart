@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:my_song_book/pages/DisplaySheets/DisplaySheetsManager.dart';
 import 'package:my_song_book/pages/DisplaySheets/widgets/Buttons/FavoriteButton.dart';
 import 'package:my_song_book/widgets/PostIt/OpenedPostItManager.dart';
+import 'package:my_song_book/widgets/PostIt/PostItHistoryManager.dart';
 
 import 'TheCloseButton.dart';
 
@@ -17,6 +18,7 @@ class ActionsButtons extends StatefulWidget {
 }
 
 class _ActionsButtonsState extends State<ActionsButtons> {
+  final postItHistoryManager = PostItHistoryManager.instance;
   OpenedPostItManager openedPostItManager = OpenedPostItManager.instance;
 
     @override
@@ -50,6 +52,7 @@ class _ActionsButtonsState extends State<ActionsButtons> {
                 icon: Icon(openedPostItManager.opened ? Icons.file_present : Icons.file_present_outlined, color: Colors.red,),
                 onPressed: () {
                   openedPostItManager.opened = !openedPostItManager.opened;
+                  postItHistoryManager.addNotesInHistory(widget.manager.sheet.id, widget.manager.sheet.notes);
                 },
               ),
             ),
@@ -57,7 +60,7 @@ class _ActionsButtonsState extends State<ActionsButtons> {
               padding: const EdgeInsets.only(right: 24.0),
               child: FavoriteButton(manager: widget.manager),
             ),
-            TheCloseButton()
+            TheCloseButton(manager: widget.manager)
           ],
         ),
       ),
