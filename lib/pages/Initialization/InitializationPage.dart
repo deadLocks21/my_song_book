@@ -106,6 +106,7 @@ class _InitializationPageState extends State<InitializationPage> {
         'date': list['date'],
       }));
     }
+    setlistsTable.setlists.sort((a, b) => b.date.compareTo(a.date));
 
     initializationManager.changeState("J'ajoute les chants à tes listes !!");
     List sheets_lists = await db.query('sheets_lists', orderBy: 'sheets_order');
