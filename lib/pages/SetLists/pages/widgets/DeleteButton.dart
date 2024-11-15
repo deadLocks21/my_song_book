@@ -20,9 +20,11 @@ class _DeleteButtonState extends State<DeleteButton> {
   Widget build(BuildContext context) {
     return Align(
       alignment: Alignment.topRight,
-      child: IconButton(icon: Icon(Icons.close_rounded), onPressed: () {
-        displayedSetlistManager.remove(widget.sheet);
-      }),
+      child: IconButton(
+          icon: Icon(Icons.close_rounded),
+          onPressed: () {
+            displayedSetlistManager.remove(widget.sheet);
+          }),
     );
   }
 }

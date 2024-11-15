@@ -20,6 +20,7 @@ class _CloseEditModeState extends State<CloseEditMode> {
       child: Icon(
         Icons.close_rounded,
         size: 32,
+        color: Colors.white,
       ),
       style: ElevatedButton.styleFrom(
           shape: CircleBorder(),

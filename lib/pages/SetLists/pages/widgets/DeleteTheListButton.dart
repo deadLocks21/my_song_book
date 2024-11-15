@@ -71,6 +71,7 @@ class _DeleteTheListButtonState extends State<DeleteTheListButton> {
       child: Icon(
         Icons.delete_rounded,
         size: 32,
+        color: Colors.white,
       ),
       style: ElevatedButton.styleFrom(
           shape: CircleBorder(),

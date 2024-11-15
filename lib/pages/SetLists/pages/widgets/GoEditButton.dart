@@ -23,6 +23,7 @@ class _GoEditButtonState extends State<GoEditButton> {
       child: Icon(
         Icons.edit_rounded,
         size: 28,
+        color: Colors.white,
       ),
       style: ElevatedButton.styleFrom(
           shape: CircleBorder(),

@@ -41,6 +41,7 @@ class _AddSetlistButtonState extends State<AddSetlistButton> {
       child: Icon(
         Icons.add_rounded,
         size: 32,
+        color: Colors.white,
       ),
       style: ElevatedButton.styleFrom(
           shape: CircleBorder(),

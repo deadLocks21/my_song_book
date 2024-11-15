@@ -23,6 +23,7 @@ class _SaveButtonState extends State<SaveButton> {
       child: Icon(
         Icons.save_rounded,
         size: 28,
+        color: Colors.white,
       ),
       style: ElevatedButton.styleFrom(
           shape: CircleBorder(),
