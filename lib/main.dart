@@ -30,7 +30,11 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
+      theme: new ThemeData(
+        // scaffoldBackgroundColor: const Color(0xFFEFEFEF),
+        scaffoldBackgroundColor: Colors.white,
+      ),
       scrollBehavior: MouseAndTouchScrollBehavior(),
       home: InitializationPage(),
     );
@@ -41,8 +45,6 @@ class MouseAndTouchScrollBehavior extends MaterialScrollBehavior {
   const MouseAndTouchScrollBehavior();
 
   @override
-  Set<PointerDeviceKind> get dragDevices => { 
-    PointerDeviceKind.mouse, 
-    PointerDeviceKind.touch
-  };
+  Set<PointerDeviceKind> get dragDevices =>
+      {PointerDeviceKind.mouse, PointerDeviceKind.touch};
 }

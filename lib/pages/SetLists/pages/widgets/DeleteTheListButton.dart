@@ -63,7 +63,8 @@ class _DeleteTheListButtonState extends State<DeleteTheListButton> {
           await db.delete('lists',
               where: 'id = ?',
               whereArgs: [displayedSetlistManager.displayedList.id]);
-          (displayableListsStorage.list('SETLIST_PAGE') as SetlistsLists).remove(displayedSetlistManager.displayedList);
+          (displayableListsStorage.list('SETLIST_PAGE') as SetlistsLists)
+              .remove(displayedSetlistManager.displayedList);
           setlistsTable.setlists.remove(displayedSetlistManager.displayedList);
           setlistsPageStatesManager.setState('HOME');
         }
@@ -74,9 +75,10 @@ class _DeleteTheListButtonState extends State<DeleteTheListButton> {
         color: Colors.white,
       ),
       style: ElevatedButton.styleFrom(
-          shape: CircleBorder(),
-          padding: EdgeInsets.all(16),
-          primary: Color(0xFFEC3E1E)),
+        shape: CircleBorder(),
+        padding: EdgeInsets.all(16),
+        backgroundColor: Color(0xFFEC3E1E),
+      ),
     );
   }
 }

@@ -44,9 +44,10 @@ class _AddSetlistButtonState extends State<AddSetlistButton> {
         color: Colors.white,
       ),
       style: ElevatedButton.styleFrom(
-          shape: CircleBorder(),
-          padding: EdgeInsets.all(16),
-          primary: Color(0xFFEC3E1E)),
+        shape: CircleBorder(),
+        padding: EdgeInsets.all(16),
+        backgroundColor: Color(0xFFEC3E1E),
+      ),
     );
   }
 }

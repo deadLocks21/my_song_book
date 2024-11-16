@@ -18,7 +18,8 @@ class _GoEditButtonState extends State<GoEditButton> {
     return ElevatedButton(
       onPressed: () {
         listsPageStatesManager.setState('EDIT_LIST');
-        displayedSetlistManager.displayedList = displayedSetlistManager.baseList;
+        displayedSetlistManager.displayedList =
+            displayedSetlistManager.baseList;
       },
       child: Icon(
         Icons.edit_rounded,
@@ -26,9 +27,10 @@ class _GoEditButtonState extends State<GoEditButton> {
         color: Colors.white,
       ),
       style: ElevatedButton.styleFrom(
-          shape: CircleBorder(),
-          padding: EdgeInsets.all(18),
-          primary: Color(0xFFEC3E1E)),
+        shape: CircleBorder(),
+        padding: EdgeInsets.all(18),
+        backgroundColor: Color(0xFFEC3E1E),
+      ),
     );
   }
 }

@@ -26,9 +26,10 @@ class _SaveButtonState extends State<SaveButton> {
         color: Colors.white,
       ),
       style: ElevatedButton.styleFrom(
-          shape: CircleBorder(),
-          padding: EdgeInsets.all(18),
-          primary: Color(0xFFEC3E1E)),
+        shape: CircleBorder(),
+        padding: EdgeInsets.all(18),
+        backgroundColor: Color(0xFFEC3E1E),
+      ),
     );
   }
 }
